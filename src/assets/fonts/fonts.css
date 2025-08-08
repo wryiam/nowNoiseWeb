@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Sora';
+  src: url('./Sora-Variable.ttf') format('truetype');
+  font-weight: 100 900; /* supports weights from 100 to 900 */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SoraItalic';
+  src: url('./Sora-VariableItalic.ttf') format('truetype');
+  font-weight: 100 900; /* supports weights from 100 to 900 */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Syncopate';
+  src: url('./Syncopate-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SyncopateBold';
+  src: url('./Syncopate-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
