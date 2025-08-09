@@ -3,12 +3,18 @@ import logo from "./assets/images/nnlogo.png";
 import './assets/fonts/fonts.css';
 import charles from './assets/images/charles.jpg';
 import will from './assets/images/will.jpg';
+import ss1 from './assets/images/ss1.png';
+import ss2 from './assets/images/ss2.png';
+import ss3 from './assets/images/ss3.png';
+
 
 const ModernAnimatedSite = () => {
   const sectionsRef = useRef([]);
   const polygonContainerRef = useRef(null);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const screenshots = [ss1, ss2, ss3];
 
   useEffect(() => {
     // Create floating particles
@@ -130,10 +136,30 @@ const ModernAnimatedSite = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % screenshots.length);
+    }, 3000);
+  
+    return () => clearInterval(slideInterval);
+  }, [screenshots.length]);
+
   const addSectionRef = (el) => {
     if (el && !sectionsRef.current.includes(el)) {
       sectionsRef.current.push(el);
     }
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide(prev => (prev + 1) % screenshots.length);
+  };
+  
+  const prevSlide = () => {
+    setCurrentSlide(prev => (prev - 1 + screenshots.length) % screenshots.length);
+  };
+  
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
   };
 
   const handleEmailSubmit = () => {
@@ -374,6 +400,7 @@ const ModernAnimatedSite = () => {
         .section {
           min-height: 100vh;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           padding: 100px 20px;
@@ -398,6 +425,7 @@ const ModernAnimatedSite = () => {
         .container {
           max-width: 1400px;
           width: 100%;
+          
         }
 
         .content-section {
@@ -427,22 +455,32 @@ const ModernAnimatedSite = () => {
         }
 
         .developers-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-          gap: 80px;
+          display: flex;
+          flex-direction: column;
+          gap: 120px;
           margin-top: 100px;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .developer-card {
           background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
           border-radius: 32px;
-          padding: 60px 40px;
+          padding: 80px 60px;
           border: 2px solid rgba(255,255,255,0.2);
           transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          text-align: center;
           box-shadow: 0 25px 50px rgba(0,0,0,0.3);
           position: relative;
           overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 80px;
+        }
+
+        .developer-card:nth-child(even) {
+          flex-direction: row-reverse;
         }
 
         .developer-card::before {
@@ -468,11 +506,10 @@ const ModernAnimatedSite = () => {
         }
 
         .developer-photo {
-          width: 220px;
-          height: 220px;
+          width: 400px;
+          height: 400px;
           background: linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
-          border-radius: 50%;
-          margin: 0 auto 40px;
+          border-radius: 16px;
           border: 4px solid rgba(255,255,255,0.3);
           display: flex;
           align-items: center;
@@ -483,6 +520,7 @@ const ModernAnimatedSite = () => {
           position: relative;
           box-shadow: 0 20px 40px rgba(0,0,0,0.3);
           transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-shrink: 0;
         }
 
         .developer-card:hover .developer-photo {
@@ -499,7 +537,7 @@ const ModernAnimatedSite = () => {
           right: 0;
           bottom: 0;
           background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
-          border-radius: 50%;
+          border-radius: 16px;
           opacity: 0;
           transition: opacity 0.6s ease;
         }
@@ -512,7 +550,7 @@ const ModernAnimatedSite = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 50%;
+          border-radius: 12px;
           transition: all 0.6s ease;
         }
 
@@ -520,35 +558,42 @@ const ModernAnimatedSite = () => {
           transform: scale(1.1);
         }
 
+        .developer-content {
+          flex: 1;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
+
         .developer-name {
           font-family: 'Sora', sans-serif;
-          font-size: 2.4rem;
-          font-weight: 400;
-          margin-bottom: 20px;
+          font-size: 3.5rem;
+          font-weight: 600;
           color: #fff;
           text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-          letter-spacing: -0.01em;
+          letter-spacing: -0.02em;
+          margin: 0;
         }
 
         .developer-role {
           font-family: 'Sora', sans-serif;
-          font-size: 1.4rem;
+          font-size: 1.6rem;
           color: #a5b4fc;
-          margin-bottom: 35px;
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 0.05em;
+          margin: 0;
         }
 
         .developer-bio {
           font-family: 'Sora', sans-serif;
-          font-size: 1.1rem;
+          font-size: 1.3rem;
           line-height: 1.8;
           color: #e0e6ff;
-          text-align: center;
-          max-width: 400px;
-          margin: 0 auto;
           font-weight: 300;
+          margin: 0;
+          max-width: none;
         }
 
         .section-title {
@@ -581,34 +626,198 @@ const ModernAnimatedSite = () => {
         }
 
         .app-demo {
-          background: rgba(255,255,255,0.05);
-          border-radius: 24px;
-          padding: 80px 60px;
-          border: 1px solid rgba(255,255,255,0.1);
-          text-align: center;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        }
-
-        .app-mockup {
-          width: 300px;
-          height: 600px;
-          background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-          border-radius: 30px;
-          margin: 40px auto;
+          background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
+          border-radius: 20px;
+          padding: 0px 60px;
           border: 2px solid rgba(255,255,255,0.2);
+          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
           position: relative;
           overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0px;
+          max-width: 1200px;
+
+        }
+        
+        .app-demo:hover {
+          transform: translateY(-15px) scale(1.02);
+          background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.12) 100%);
+          border-color: rgba(255,255,255,0.4);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.4);
         }
 
-        .app-mockup::before {
-          content: 'nowNoise App';
+        .vision-section {
+          background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
+          border-radius: 20px;
+          padding: 80px 60px;
+          border: 2px solid rgba(255,255,255,0.2);
+          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0px;
+          min-width: 1200px;
+
+        }
+
+        .vision-section:hover {
+          transform: translateY(-15px) scale(1.02);
+          background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.12) 100%);
+          border-color: rgba(255,255,255,0.4);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        .email-section{
+          background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
+          border-radius: 20px;
+          padding: 80px 60px;
+          border: 2px solid rgba(255,255,255,0.2);
+          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0px;
+          min-width: 1200px;
+
+        }
+
+        .email-section:hover {
+          transform: translateY(-15px) scale(1.02);
+          background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.12) 100%);
+          border-color: rgba(255,255,255,0.4);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        
+        .app-mockup {
+          width: 310px;
+          height: 570px;
+          background: linear-gradient(145deg, #1a1a1a 0%, #0d1117 100%);
+          border-radius: 50px;
+          margin: 40px auto;
+          border: 5px solid #2d3748;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 
+            0 25px 50px rgba(0,0,0,0.5),
+            inset 0 1px 0 rgba(255,255,255,0.1),
+            inset 0 -1px 0 rgba(0,0,0,0.5);
+          transition: transform 0.3s ease;
+        }
+
+        .app-mockup:hover {
+          transform: scale(1.05);
+        }
+
+        .app-mockup::after {
+          content: '';
+          position: absolute;
+          top: 22px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 4px;
+          background: #333;
+          border-radius: 2px;
+          z-index: 11;
+        }
+
+        .slideshow-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          padding-top: 50px;
+          overflow: hidden;
+          border-radius: 27px;
+        }
+
+        .slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide.active {
+          opacity: 1;
+        }
+
+        .slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 27px;
+        }
+
+        .slide-indicators {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 8px;
+          z-index: 15;
+        }
+
+        .indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+          background: rgba(255,255,255,0.9);
+          transform: scale(1.2);
+        }
+
+        .slide-nav {
           position: absolute;
           top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          color: rgba(255,255,255,0.6);
-          font-size: 1.2rem;
-          font-weight: 300;
+          transform: translateY(-50%);
+          background: rgba(0,0,0,0.5);
+          border: none;
+          color: white;
+          font-size: 20px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 15;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide-nav:hover {
+          background: rgba(0,0,0,0.7);
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .slide-nav.prev {
+          left: 15px;
+        }
+
+        .slide-nav.next {
+          right: 15px;
         }
 
         .email-form {
@@ -701,9 +910,24 @@ const ModernAnimatedSite = () => {
         }
 
         @media (max-width: 1200px) {
-          .developers-grid {
-            grid-template-columns: 1fr;
-            gap: 60px;
+          .developer-card {
+            flex-direction: column !important;
+            text-align: center;
+            gap: 50px;
+            padding: 60px 50px;
+          }
+
+          .developer-content {
+            text-align: center;
+          }
+
+          .developer-photo {
+            width: 350px;
+            height: 350px;
+          }
+
+          .developer-name {
+            font-size: 3rem;
           }
         }
 
@@ -734,26 +958,30 @@ const ModernAnimatedSite = () => {
           }
           
           .developers-grid {
-            grid-template-columns: 1fr;
-            gap: 50px;
+            gap: 80px;
             margin-top: 60px;
           }
           
           .developer-card {
-            padding: 50px 30px;
+            padding: 50px 40px;
+            gap: 40px;
           }
 
           .developer-photo {
-            width: 180px;
-            height: 180px;
+            width: 280px;
+            height: 280px;
           }
 
           .developer-name {
-            font-size: 2rem;
+            font-size: 2.5rem;
           }
 
           .developer-role {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+          }
+
+          .developer-bio {
+            font-size: 1.1rem;
           }
 
           .app-mockup {
@@ -768,16 +996,25 @@ const ModernAnimatedSite = () => {
           }
           
           .developer-card {
-            padding: 40px 25px;
+            padding: 40px 30px;
+            gap: 30px;
           }
 
           .developer-photo {
-            width: 160px;
-            height: 160px;
+            width: 220px;
+            height: 220px;
           }
 
           .developer-name {
-            font-size: 1.8rem;
+            font-size: 2rem;
+          }
+
+          .developer-role {
+            font-size: 1.1rem;
+          }
+
+          .developer-bio {
+            font-size: 1rem;
           }
 
           .app-mockup {
@@ -792,8 +1029,7 @@ const ModernAnimatedSite = () => {
       `}</style>
 
       {/* Background Elements */}
-      <div className="bg-polygons" ref={polygonContainerRef}></div>
-      <div className="floating-particles"></div>
+
       <div className="blur-overlay"></div>
 
       {/* Fullscreen Logo Hero Section */}
@@ -801,7 +1037,7 @@ const ModernAnimatedSite = () => {
         <div className="fullscreen-logo-container">
           <img src={logo} className="main-logo" alt="nowNoise Logo" />
           <div className="logotag">
-            <h1 className="hero-title">nowNoise</h1>
+            <h1 className="hero-title">NowNoise</h1>
             <h2 className="hero-tagline interactive-hover">your song, in a day</h2>
           </div>
         </div>
@@ -816,63 +1052,77 @@ const ModernAnimatedSite = () => {
               <div className="developer-photo">
                 <img src={will} alt="William Costales" />
               </div>
-              <h3 className="developer-name interactive-hover">william costales</h3>
-              <p className="developer-role">Co-Founder & Lead Developer</p>
-              <p className="developer-bio">
-                With a strong background as a computer scientist and AI student partner at university, Will brings technical excellence and innovative problem-solving to nowNoise's development team.
-              </p>
+              <div className="developer-content">
+                <h3 className="developer-name interactive-hover">William Costales</h3>
+                <p className="developer-role">Co-Founder & Lead Developer</p>
+                <p className="developer-bio">
+                  With a strong background as a computer scientist and AI student partner at university, Will brings technical excellence and innovative problem-solving to nowNoise's development team. His expertise in machine learning and software architecture drives the platform's cutting-edge AI capabilities.
+                </p>
+              </div>
             </div>
             <div className="developer-card">
               <div className="developer-photo">
-                <img src={charles} alt="Charlie Poumblaum" />
+                <img src={charles} alt="Charlie Ponambalum" />
               </div>
-              <h3 className="developer-name interactive-hover">charlie poumblaum</h3>
-              <p className="developer-role">Co-Founder & Creative Director</p>
-              <p className="developer-bio">
-                A classically trained musician turned tech entrepreneur, Charlie bridges the gap between artistry and innovation. His background in music production and AI research drives nowNoise's mission to democratize music creation.
-              </p>
+              <div className="developer-content">
+                <h3 className="developer-name interactive-hover">Charlie Ponambalum</h3>
+                <p className="developer-role">Co-Founder & Creative Lead</p>
+                <p className="developer-bio">
+                  A classically trained musician turned tech entrepreneur, Charlie bridges the gap between artistry and innovation. His background in music production and AI research drives nowNoise's mission to democratize music creation, ensuring that technology serves creativity.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* App Demo Section */}
+      
       <section className="section" ref={addSectionRef}>
-        <div className="container">
+      <h2 className="section-title text-glow">the nownoise app</h2>
           <div className="app-demo">
-            <h2 className="section-title text-glow">experiencing nowNoise</h2>
+            <div className='appcont'>
+              <h2 className="section-title text-glow">experiencing nowNoise</h2>
             <p className="description-text interactive-hover">
               nowNoise lets you experience sound in real time — expressive, emotional, and always evolving.
-            </p>
+            </p></div>
+            
             <div className="app-mockup">
-              {/* This would contain your actual app demo or screenshots */}
-            </div>
-            <div style={{display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', marginTop: '50px'}}>
-              <div className="interactive-hover" style={{textAlign: 'center', padding: '25px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)'}}>
-                <div style={{fontSize: '3rem', marginBottom: '15px', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))'}}>🎵</div>
-                <h4 style={{color: '#fff', marginBottom: '8px', fontFamily: 'Sora', fontWeight: '500'}}>Upload Your Idea</h4>
-                <p style={{color: '#c7d2fe', fontSize: '0.9rem', fontFamily: 'Sora'}}>Hum, sing, or describe</p>
-              </div>
-              <div className="interactive-hover" style={{textAlign: 'center', padding: '25px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)'}}>
-                <div style={{fontSize: '3rem', marginBottom: '15px', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))'}}>🤖</div>
-                <h4 style={{color: '#fff', marginBottom: '8px', fontFamily: 'Sora', fontWeight: '500'}}>AI Magic</h4>
-                <p style={{color: '#c7d2fe', fontSize: '0.9rem', fontFamily: 'Sora'}}>We create and produce</p>
-              </div>
-              <div className="interactive-hover" style={{textAlign: 'center', padding: '25px', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)'}}>
-                <div style={{fontSize: '3rem', marginBottom: '15px', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))'}}>🎧</div>
-                <h4 style={{color: '#fff', marginBottom: '8px', fontFamily: 'Sora', fontWeight: '500'}}>Your Song</h4>
-                <p style={{color: '#c7d2fe', fontSize: '0.9rem', fontFamily: 'Sora'}}>Ready in 24 hours</p>
-              </div>
-            </div>
+  <div className="slideshow-container">
+    {screenshots.map((screenshot, index) => (
+      <div 
+        key={index}
+        className={`slide ${index === currentSlide ? 'active' : ''}`}
+      >
+        <img src={screenshot} alt={`App Screenshot ${index + 1}`} />
+      </div>
+    ))}
+    
+    <button className="slide-nav prev" onClick={prevSlide}>
+      ‹
+    </button>
+    <button className="slide-nav next" onClick={nextSlide}>
+      ›
+    </button>
+    
+    <div className="slide-indicators">
+      {screenshots.map((_, index) => (
+        <div
+          key={index}
+          className={`indicator ${index === currentSlide ? 'active' : ''}`}
+          onClick={() => goToSlide(index)}
+        />
+      ))}
+    </div>
+  </div>
+</div>
           </div>
-        </div>
       </section>
 
       {/* Vision Section */}
       <section className="section" ref={addSectionRef}>
-        <div className="container">
-          <div className="content-section">
-            <h2 className="section-title text-glow">Our Vision</h2>
+      <h2 className="section-title text-glow">our vision as a team</h2>
+          <div className="vision-section">
             <p className="description-text interactive-hover">
               Music creation shouldn't be limited by technical barriers or expensive equipment. 
               We believe everyone has a song inside them waiting to be heard. nowNoise harnesses 
@@ -883,14 +1133,12 @@ const ModernAnimatedSite = () => {
               concept you want to express, our platform turns your creative spark into a complete musical experience.
             </p>
           </div>
-        </div>
       </section>
 
       {/* Email List Section */}
       <section className="section" ref={addSectionRef}>
-        <div className="container">
-          <div className="content-section">
-            <h2 className="section-title text-glow">Join the Waitlist</h2>
+      <h2 className="section-title text-glow">stay in tune</h2>
+          <div className="email-section">
             <p className="description-text interactive-hover">
               Be among the first to experience the future of music creation. 
               Get early access and exclusive updates about nowNoise.
@@ -919,7 +1167,6 @@ const ModernAnimatedSite = () => {
               </div>
             )}
           </div>
-        </div>
       </section>
     </>
   );
