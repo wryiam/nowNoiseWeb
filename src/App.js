@@ -843,6 +843,429 @@ const ModernAnimatedSite = () => {
           background: rgba(255,255,255,0.15);
         }
 
+        .app-demo-enhanced {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
+  border-radius: 32px;
+  padding: 80px 60px;
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 60px;
+}
+
+.app-demo-enhanced:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+}
+
+.mockup-container {
+  flex: 0 0 400px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.app-mockup-enhanced {
+  position: relative;
+  width: 320px;
+  height: 600px;
+}
+
+.phone-frame {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d1117 100%);
+  border-radius: 40px;
+  border: 4px solid #2d3748;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all 0.4s ease;
+}
+
+.phone-frame:hover {
+  transform: scale(1.02) rotateY(-5deg);
+  box-shadow: 0 35px 70px rgba(0,0,0,0.7);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  z-index: 20;
+}
+
+.phone-reflection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 30%, transparent 70%);
+  border-radius: 36px;
+  pointer-events: none;
+}
+
+.slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  padding: 30px 20px 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.slide:hover .slide-overlay {
+  transform: translateY(0);
+}
+
+.slide-info {
+  color: white;
+  text-align: center;
+}
+
+.slide-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.slide-description {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}
+
+.slide-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  z-index: 15;
+}
+
+.slide-nav {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.slide-nav:hover {
+  background: rgba(0,0,0,0.8);
+  transform: scale(1.1);
+}
+
+.slide-nav span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.slide-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 15;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: rgba(255,255,255,0.9);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-note {
+  position: absolute;
+  color: rgba(255,255,255,0.3);
+  font-size: 24px;
+  animation: float-notes 4s ease-in-out infinite;
+}
+
+.note-1 {
+  top: 20%;
+  left: -30px;
+  animation-delay: 0s;
+}
+
+.note-2 {
+  top: 60%;
+  right: -30px;
+  animation-delay: 1.5s;
+}
+
+.note-3 {
+  top: 40%;
+  left: -25px;
+  animation-delay: 3s;
+}
+
+.floating-wave {
+  position: absolute;
+  bottom: -20px;
+  left: -50px;
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  border-radius: 10px;
+  animation: wave-pulse 3s ease-in-out infinite;
+}
+
+@keyframes float-notes {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-20px) rotate(10deg); opacity: 0.6; }
+}
+
+@keyframes wave-pulse {
+  0%, 100% { opacity: 0.2; transform: scaleX(1); }
+  50% { opacity: 0.5; transform: scaleX(1.2); }
+}
+
+.features-showcase {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover, .feature-card.active {
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateX(10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #4ade80, #3b82f6, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::before, .feature-card.active::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.feature-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.feature-description {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.feature-stats {
+  display: flex;
+  gap: 30px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+.stat-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.highlight-item {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genre-tag {
+  background: rgba(139, 92, 246, 0.2);
+  color: #a78bfa;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.demo-info {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(20px);
+}
+
+.info-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.info-item {
+  text-align: center;
+  flex: 1;
+}
+
+.info-number {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4ade80, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  font-family: 'Sora', sans-serif;
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .app-demo-enhanced {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+  }
+  
+  .mockup-container {
+    flex: none;
+  }
+  
+  .info-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-demo-enhanced {
+    padding: 50px 30px;
+  }
+  
+  .app-mockup-enhanced {
+    width: 280px;
+    height: 520px;
+  }
+  
+  .feature-card {
+    padding: 25px;
+  }
+  
+  .info-number {
+    font-size: 2rem;
+  }
+}
+
         .email-input::placeholder {
           color: rgba(255,255,255,0.6);
         }
@@ -1076,48 +1499,148 @@ const ModernAnimatedSite = () => {
         </div>
       </section>
 
-      {/* App Demo Section */}
-      
-      <section className="section" ref={addSectionRef}>
-      <h2 className="section-title text-glow">the nownoise app</h2>
-          <div className="app-demo">
-            <div className='appcont'>
-              <h2 className="section-title text-glow">experiencing nowNoise</h2>
-            <p className="description-text interactive-hover">
-              nowNoise lets you experience sound in real time — expressive, emotional, and always evolving.
-            </p></div>
+<section className="section" ref={addSectionRef}>
+  <div className="container">
+    <h2 className="section-title text-glow">experience nowNoise</h2>
+    
+    <div className="app-demo-enhanced">
+      {/* Left side - App mockup with enhanced features */}
+      <div className="mockup-container">
+        <div className="app-mockup-enhanced">
+          <div className="phone-frame">
+            <div className="phone-notch"></div>
+            <div className="slideshow-container">
+              {screenshots.map((screenshot, index) => (
+                <div 
+                  key={index}
+                  className={`slide ${index === currentSlide ? 'active' : ''}`}
+                >
+                  <img src={screenshot} alt={`nowNoise App - ${index === 0 ? 'Music Creation' : index === 1 ? 'AI Studio' : 'Sound Library'}`} />
+                  <div className="slide-overlay">
+                    <div className="slide-info">
+                      <h4 className="slide-title">
+                        {index === 0 ? 'Create Instantly' : index === 1 ? 'AI-Powered Studio' : 'Explore Sounds'}
+                      </h4>
+                      <p className="slide-description">
+                        {index === 0 ? 'Turn ideas into music with simple inputs' : 
+                         index === 1 ? 'Professional tools powered by AI' : 
+                         'Discover and customize audio elements'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Enhanced Navigation */}
+              <div className="slide-controls">
+                <button className="slide-nav prev" onClick={prevSlide}>
+                  <span>‹</span>
+                </button>
+                <button className="slide-nav next" onClick={nextSlide}>
+                  <span>›</span>
+                </button>
+              </div>
+              
+              {/* Progress indicators */}
+              <div className="slide-progress">
+                {screenshots.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`progress-dot ${index === currentSlide ? 'active' : ''}`}
+                    onClick={() => goToSlide(index)}
+                  />
+                ))}
+              </div>
+            </div>
             
-            <div className="app-mockup">
-  <div className="slideshow-container">
-    {screenshots.map((screenshot, index) => (
-      <div 
-        key={index}
-        className={`slide ${index === currentSlide ? 'active' : ''}`}
-      >
-        <img src={screenshot} alt={`App Screenshot ${index + 1}`} />
+            {/* Phone reflection effect */}
+            <div className="phone-reflection"></div>
+          </div>
+          
+          {/* Floating UI elements for visual interest */}
+          <div className="floating-elements">
+            <div className="floating-note note-1">♪</div>
+            <div className="floating-note note-2">♫</div>
+            <div className="floating-note note-3">♪</div>
+            <div className="floating-wave"></div>
+          </div>
+        </div>
       </div>
-    ))}
-    
-    <button className="slide-nav prev" onClick={prevSlide}>
-      ‹
-    </button>
-    <button className="slide-nav next" onClick={nextSlide}>
-      ›
-    </button>
-    
-    <div className="slide-indicators">
-      {screenshots.map((_, index) => (
-        <div
-          key={index}
-          className={`indicator ${index === currentSlide ? 'active' : ''}`}
-          onClick={() => goToSlide(index)}
-        />
-      ))}
+
+      {/* Right side - Interactive feature showcase */}
+      <div className="features-showcase">
+        <div className="feature-card active" data-feature="create">
+          <div className="feature-content">
+            <h3 className="feature-title">Instant Creation</h3>
+            <p className="feature-description">
+              Simply hum a melody, describe your vision, or upload a voice memo. 
+              Our AI transforms your input into professional-quality music within hours.
+            </p>
+            <div className="feature-stats">
+              <div className="stat">
+                <span className="stat-number">24hr</span>
+                <span className="stat-label">turnaround</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">100+</span>
+                <span className="stat-label">instruments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="feature-card" data-feature="studio">
+          <div className="feature-content">
+            <h3 className="feature-title">AI Studio</h3>
+            <p className="feature-description">
+              Fine-tune every aspect of your track with intelligent suggestions. 
+              Adjust tempo, key, instrumentation, and mood with intuitive controls.
+            </p>
+            <div className="feature-highlight">
+              <div className="highlight-item">Real-time preview</div>
+              <div className="highlight-item">Smart recommendations</div>
+              <div className="highlight-item">Version control</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="feature-card" data-feature="library">
+          <div className="feature-content">
+            <h3 className="feature-title">Sound Library</h3>
+            <p className="feature-description">
+              Access thousands of samples, loops, and AI-generated elements. 
+              Mix genres, create unique soundscapes, and discover new musical territories.
+            </p>
+            <div className="genre-tags">
+              <span className="genre-tag">Electronic</span>
+              <span className="genre-tag">Classical</span>
+              <span className="genre-tag">Hip-Hop</span>
+              <span className="genre-tag">Jazz</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom info section */}
+    <div className="demo-info">
+      <div className="info-grid">
+        <div className="info-item">
+          <div className="info-number">30sec</div>
+          <div className="info-label">to get started</div>
+        </div>
+        <div className="info-item">
+          <div className="info-number">24hr</div>
+          <div className="info-label">to complete</div>
+        </div>
+        <div className="info-item">
+          <div className="info-number">∞</div>
+          <div className="info-label">creative possibilities</div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-          </div>
-      </section>
+</section>
 
       {/* Vision Section */}
       <section className="section" ref={addSectionRef}>
