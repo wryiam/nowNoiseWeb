@@ -170,7 +170,7 @@ const ModernAnimatedSite = () => {
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
-  margin: 2rem 0;
+  margin: 0rem 0;
 }
 
         /* Enhanced Founders Section Styles */
@@ -254,29 +254,7 @@ const ModernAnimatedSite = () => {
   background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
 }
 
-.story-content {
-  position: relative;
-  z-index: 10;
-  font-family: 'Sora';
-}
 
-.story-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.2rem);
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.story-text {
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.7;
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  padding-bottom: 25px;
-}
 
 /* Newsletter Section Styles */
 .newsletter-section {
@@ -1770,58 +1748,268 @@ const ModernAnimatedSite = () => {
   gap: 2rem;
 }
 
+/* Enhanced Polaroid Stack Styles */
+.story-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.story-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+}
+
+/* Polaroid Stack Container */
+.polaroid-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 380px;
+    perspective: 1200px;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .polaroid-container {
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-            padding-bottom: 3rem;
-            background: linear-gradient(45deg, 
-                rgb(222, 211, 211), 
-                rgb(207, 200, 200));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            transform: rotate(2deg);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.2),
-                0 6px 20px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-            max-width: 320px;
-            align-items: center;
-            justify-content: center;
-        }
+    position: absolute;
+    width: 280px;
+    height: 350px;
+    background: linear-gradient(145deg, 
+        rgba(248, 248, 248, 0.95), 
+        rgba(240, 240, 240, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    transform-style: preserve-3d;
+    backdrop-filter: blur(10px);
+    padding: 20px 20px 60px 20px;
+    display: flex;
+    flex-direction: column;
+}
 
-        .polaroid-container:hover {
-            transform: rotate(0deg) translateY(-10px);
-            box-shadow: 
-                0 20px 50px rgba(0, 0, 0, 0.3),
-                0 15px 35px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.98);
-        }
+/* Image container within polaroid */
+.polaroid-image-wrapper {
+    width: 100%;
+    height: 240px;
+    background: #f8f8f8;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.05);
+}
 
+.polaroid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    display: block;
+}
+
+.polaroid-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 0.9rem;
+    font-style: italic;
+    border-radius: 3px;
+}
+
+.polaroid-caption {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    line-height: 1.4;
+    font-family: 'Sora', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Individual polaroid positioning - Default stacked state */
+.polaroid-container:nth-child(1) {
+    transform: rotate(-8deg) translateY(-15px) translateZ(30px);
+    z-index: 3;
+}
+
+.polaroid-container:nth-child(2) {
+    transform: rotate(3deg) translateY(5px) translateZ(20px);
+    z-index: 4;
+}
+
+.polaroid-container:nth-child(3) {
+    transform: rotate(12deg) translateY(10px) translateX(8px) translateZ(10px);
+    z-index: 2;
+}
+
+/* Hover state - Spread out animation */
+.polaroid-stack:hover .polaroid-container:nth-child(1) {
+    transform: rotate(-25deg) translateX(-160px) translateY(-50px) translateZ(50px) scale(1.05);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.25),
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    z-index: 5;
+}
+
+.polaroid-stack:hover .polaroid-container:nth-child(2) {
+    transform: rotate(0deg) translateY(-60px) translateZ(80px) scale(1.08);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.3),
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    z-index: 6;
+}
+
+.polaroid-stack:hover .polaroid-container:nth-child(3) {
+    transform: rotate(28deg) translateX(160px) translateY(-30px) translateZ(40px) scale(1.04);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.25),
+        0 15px 35px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    z-index: 5;
+}
+
+/* Individual polaroid hover effects */
+.polaroid-container:hover .polaroid-image {
+    transform: scale(1.05);
+}
+
+/* Add subtle glow on individual polaroid hover */
+.polaroid-container:hover {
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(168, 85, 247, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Story text styles */
+.story-text {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    max-width: 800px;
+    margin: 0 auto 25px;
+}
+
+.story-title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 250;
+    background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .polaroid-stack {
+        height: 380px;
+        width: 300px;
+        perspective: 800px;
+    }
+
+    .polaroid-container {
+        width: 220px;
+        height: 280px;
+        padding: 15px 15px 45px 15px;
+    }
+
+    .polaroid-image-wrapper {
+        height: 180px;
+    }
+
+    .polaroid-caption {
+        margin-top: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Adjusted hover positions for mobile */
+    .polaroid-stack:hover .polaroid-container:nth-child(1) {
+        transform: rotate(-20deg) translateX(-100px) translateY(-40px) translateZ(30px) scale(1.03);
+    }
+
+    .polaroid-stack:hover .polaroid-container:nth-child(2) {
+        transform: rotate(0deg) translateY(-45px) translateZ(50px) scale(1.06);
+    }
+
+    .polaroid-stack:hover .polaroid-container:nth-child(3) {
+        transform: rotate(22deg) translateX(100px) translateY(-25px) translateZ(25px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .polaroid-stack {
+        height: 320px;
+        width: 250px;
+    }
+
+    .polaroid-container {
+        width: 180px;
+        height: 230px;
+        padding: 12px 12px 35px 12px;
+    }
+
+    .polaroid-image-wrapper {
+        height: 140px;
+    }
+
+    .polaroid-caption {
+        margin-top: 10px;
+        font-size: 0.8rem;
+    }
+
+    /* More conservative hover effects on small screens */
+    .polaroid-stack:hover .polaroid-container:nth-child(1) {
+        transform: rotate(-15deg) translateX(-60px) translateY(-30px) translateZ(20px) scale(1.02);
+    }
+
+    .polaroid-stack:hover .polaroid-container:nth-child(2) {
+        transform: rotate(0deg) translateY(-35px) translateZ(30px) scale(1.04);
+    }
+
+    .polaroid-stack:hover .polaroid-container:nth-child(3) {
+        transform: rotate(18deg) translateX(60px) translateY(-20px) translateZ(15px) scale(1.01);
+    }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .polaroid-stack,
+    .polaroid-container,
+    .polaroid-image {
+        transition: none;
+    }
     
-        .polaroid-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 3px;
-            background: #f5f5f5;
-            margin-bottom: 1rem;
-        }
-
-        .polaroid-caption {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #333;
-            font-weight: 400;
-            line-height: 1.4;
-            min-height: 1.rem;
-            position: relative;
-            margin-top: 15px;
-        }
-
+    .polaroid-stack:hover .polaroid-container:nth-child(1),
+    .polaroid-stack:hover .polaroid-container:nth-child(2),
+    .polaroid-stack:hover .polaroid-container:nth-child(3) {
+        transform: scale(1.02);
+    }
+}
 
 
 .mission-point {
@@ -2519,30 +2707,48 @@ const ModernAnimatedSite = () => {
       {/* Left Column - Title and Story */}
       <div className="founders-left-column">
         <div className="founders-header">
-          <h2 className="founders-title">Meet the Founders</h2>
+          <h2 className="founders-title">Our Story</h2>
          
           <div className="stylized-line"></div>
         </div>
         
    
-          <div className="story-content">
-          <div class="polaroid-container">
-        <img src={wc} alt="Summer memories" class="polaroid-image" />
-        <div class="polaroid-caption">song-making</div>
+          <div class="story-content">
+    <div class="polaroid-stack">
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <img src={wc} alt="Will and Charlie making music" class="polaroid-image"></img>
+            </div>
+            <div class="polaroid-caption">song-making sessions</div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <div class="polaroid-placeholder">Late Night Coding</div>
+            </div>
+            <div class="polaroid-caption">building dreams</div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <div class="polaroid-placeholder">Music Discovery</div>
+            </div>
+            <div class="polaroid-caption">finding gems</div>
+        </div>
     </div>
-            <p className="story-text">
-              It started with a simple frustration: why do all streaming platforms play the same predictable music? 
-              As college friends who bonded over late-night music discovery sessions, Will and Charlie realized 
-              the best songs always came from friends, not algorithms. 
-              
-             </p>
-            <p className='story-text'>
-            After years of sharing hidden gems with 
-              each other, they decided to build a platform where authentic music discovery could happen at scale—
-              where your next favorite song comes from a real person having a real moment, not a machine learning model.
-            
-            </p>
-          </div>
+    
+    <div>
+        <p class="story-text">
+            It started with a simple frustration: why do all streaming platforms play the same predictable music? 
+            As college friends who bonded over late-night music discovery sessions, Will and Charlie realized 
+            the best songs always came from friends, not algorithms.
+        </p>
+        <p class="story-text">
+            After years of sharing hidden gems with each other, they decided to build a platform where authentic music discovery could happen at scale—
+            where your next favorite song comes from a real person having a real moment, not a machine learning model.
+        </p>
+    </div>
+</div>
 
       </div>
 
