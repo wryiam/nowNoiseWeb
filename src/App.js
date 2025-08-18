@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronDown, Play, Users, Heart, Sparkles, Music, Zap, Globe } from 'lucide-react';
+import { ChevronDown, Play, Users, Heart, Sparkles, Music, Zap, Globe, Mail, Check, AlertCircle } from 'lucide-react';
 
 // Import your assets
 import logo from "./assets/images/nnlogo.png";
@@ -13,7 +13,10 @@ import record from './assets/images/records.jpeg';
 import cds from './assets/images/cds.jpg';
 import cass from './assets/images/cass.jpg';
 import shop from './assets/images/shop.jpg';
-import wc from './assets/images/willnchar.jpg'
+
+import friends from './assets/images/IMG_0914.jpeg'
+import discuss from './assets/images/IMG_4699.jpeg'
+import play from './assets/images/IMG_4700.jpeg'
 
 
 const ModernAnimatedSite = () => {
@@ -21,6 +24,47 @@ const ModernAnimatedSite = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const screenshots = [ss1, ss2, ss3];
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const validateEmail = (email) => {
+    return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setStatus('error');
+      setErrorMessage('Please enter your email address');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setStatus('error');
+      setErrorMessage('Please enter a valid email address');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMessage('');
+
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setStatus('success');
+      setEmail('');
+      
+      // Reset to idle after 4 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 4000);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -124,6 +168,8 @@ const ModernAnimatedSite = () => {
           margin: 0 auto;
         }
 
+
+
         .logotag {
           display: flex;
           flex-direction: column;
@@ -155,6 +201,32 @@ const ModernAnimatedSite = () => {
           animation: fadeInUp 1.5s ease-out 0.5s forwards;
         }
 
+        .scrollbtn{
+            background: linear-gradient(135deg,rgba(64, 6, 212, 0.46) 0%,rgba(169, 85, 247, 0.63) 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 1rem 1.8rem;
+            color: #fff;
+            font-weight: 400;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 0.06em;
+
+            gap: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Sora';
+
+            opacity: 0;
+            animation: fadeInUp 2s ease-out 2s forwards;
+          }
+
+
+.scrollbtn::hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+}
+
         .hero-tagline {
           font-family: 'SoraItalic';
           font-style: italic;
@@ -168,19 +240,20 @@ const ModernAnimatedSite = () => {
 
         .stylized-line {
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
   margin: 0rem 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
         /* Enhanced Founders Section Styles */
 .founders-section {
   padding: clamp(80px, 10vw, 140px) 20px;
-  
+  margin-left: 120px;
   position: relative;
   z-index: 5;
-  margin-left: 50px;
-  margin-right: 50px;
+        margin-right: 80px;
   opacity: 0;
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(50px);
@@ -198,14 +271,14 @@ const ModernAnimatedSite = () => {
   grid-template-columns: 1.2fr 1fr;
   gap: clamp(80px, 12vw, 120px);
   align-items: start;
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 /* Left Column - Text Content */
 .founders-left-column {
-  position: sticky;
-  top: 100px;
+
+  top: 0px;
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -232,9 +305,11 @@ const ModernAnimatedSite = () => {
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
+  font-family: 'Sora';
 }
 
 .founders-story {
+      font-family: 'Sora';
   padding: clamp(40px, 6vw, 60px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -254,351 +329,366 @@ const ModernAnimatedSite = () => {
   background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
 }
 
-
-
-/* Newsletter Section Styles */
-.newsletter-section {
-  padding: clamp(120px, 15vw, 200px) 20px;
-  position: relative;
-  z-index: 5;
-  opacity: 0;
-  transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(50px);
-  background: 
-    radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
-  overflow: hidden;
-}
-
-.newsletter-section.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.newsletter-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
-  gap: clamp(40px, 8vw, 80px);
-  align-items: center;
-  font-family: 'Sora';
-  position: relative;
-}
-
-/* Animated Visual Elements */
-.newsletter-visual {
-  position: relative;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sound-waves {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-}
-
-.wave {
-  position: absolute;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  animation: ripple 3s ease-out infinite;
-}
-
-.wave-1 {
-  width: 100%;
-  height: 100%;
-  border-color: rgba(6, 182, 212, 0.3);
-  animation-delay: 0s;
-}
-
-.wave-2 {
-  width: 80%;
-  height: 80%;
-  top: 10%;
-  left: 10%;
-  border-color: rgba(168, 85, 247, 0.3);
-  animation-delay: 0.6s;
-}
-
-.wave-3 {
-  width: 60%;
-  height: 60%;
-  top: 20%;
-  left: 20%;
-  border-color: rgba(6, 182, 212, 0.4);
-  animation-delay: 1.2s;
-}
-
-.wave-4 {
-  width: 40%;
-  height: 40%;
-  top: 30%;
-  left: 30%;
-  border-color: rgba(168, 85, 247, 0.4);
-  animation-delay: 1.8s;
-}
-
-.wave-5 {
-  width: 20%;
-  height: 20%;
-  top: 40%;
-  left: 40%;
-  border-color: rgba(6, 182, 212, 0.5);
-  animation-delay: 2.4s;
-}
-
-.vinyl-record {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-  border-radius: 50%;
-  animation: spin 10s linear infinite;
-  box-shadow: 
-    0 0 30px rgba(0, 0, 0, 0.8),
-    inset 0 0 20px rgba(255, 255, 255, 0.02);
-  z-index: 10;
-}
-
-.record-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #333 0%, #111 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.record-hole {
-  width: 8px;
-  height: 8px;
-  background: #000;
-  border-radius: 50%;
-}
-
-.record-grooves {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.groove {
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.groove:nth-child(1) {
-  width: 80%;
-  height: 80%;
-}
-
-.groove:nth-child(2) {
-  width: 100%;
-  height: 100%;
-}
-
-.groove:nth-child(3) {
-  width: 120%;
-  height: 120%;
-}
-
-.groove:nth-child(4) {
-  width: 140%;
-  height: 140%;
-}
-
-.floating-notes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.note {
-  position: absolute;
-  color: rgba(6, 182, 212, 0.6);
-  animation: floatNote 4s ease-in-out infinite;
-}
-
-.note-1 {
-  top: 10%;
-  left: 20%;
-  animation-delay: 0s;
-  color: rgba(168, 85, 247, 0.7);
-}
-
-.note-2 {
-  top: 20%;
-  right: 15%;
-  animation-delay: 1s;
-  color: rgba(6, 182, 212, 0.6);
-}
-
-.note-3 {
-  bottom: 30%;
-  left: 10%;
-  animation-delay: 2s;
-  color: rgba(168, 85, 247, 0.5);
-}
-
-.note-4 {
-  bottom: 15%;
-  right: 25%;
-  animation-delay: 3s;
-  color: rgba(6, 182, 212, 0.8);
-}
-
-.note-5 {
-  top: 50%;
-  left: 5%;
-  animation-delay: 1.5s;
-  color: rgba(168, 85, 247, 0.6);
-}
-
-/* Text Content */
-.newsletter-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 300;
-  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 40%, #a855f7 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  text-align: center;
-}
-
-.newsletter-description {
-  font-size: clamp(1.1rem, 2.8vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.newsletter-stats {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  text-align: center;
-  animation: countUp 2s ease-out forwards;
-}
-
-.stat-number {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 700;
-  background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.25rem;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-divider {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-}
-
-/* Enhanced Form */
-.form-wrapper {
-  position: relative;
-}
-
-.form-group {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.input-wrapper {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  border-radius: 60px;
-}
-
-.email-input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 60px;
-  padding: 1.2rem 1.8rem;
-  color: #fff;
-  font-size: 1rem;
-  font-family: 'Sora';
-  font-weight: 500;
+.newsletter-card{
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(107, 126, 219, 0.64);
+  border-radius: 28px;
+  padding: clamp(2rem, 4vw, 2.5rem);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  outline: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Sora';
   backdrop-filter: blur(20px);
+  min-width: 1000px;
+
 }
 
-.email-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 400;
+.newsletter-section {
+          padding: 120px 20px;
+          position: relative;
+          z-index: 5;
+          
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .newsletter-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .newsletter-title {
+          font-size: clamp(2.5rem, 6vw, 4rem);
+          font-weight: 300;
+          background: linear-gradient(135deg, #ffffff 0%,rgb(133, 222, 238) 40%,rgb(179, 110, 244) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 1.5rem;
+          line-height: 1.1;
+          padding-top: 30px;
+          padding-bottom: 20px;
+        }
+
+        .newsletter-description {
+          font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+          color: rgba(255, 255, 255, 0.85);
+          margin-bottom: 3rem;
+          line-height: 1.6;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .newsletter-stats {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 2.5rem;
+          margin-bottom: 0.8rem;
+          flex-wrap: wrap;
+        }
+
+        .stat-item {
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+          font-weight: 700;
+          background: linear-gradient(135deg,rgb(220, 52, 209) 0%,rgb(192, 137, 244) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.25rem;
+          display: block;
+        }
+
+        .stat-label {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .stat-divider {
+          width: 2px;
+          height: 49px;
+          background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+        }
+
+        .form-container {
+          position: relative;
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .form-group {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 1.5rem;
+          position: relative;
+        }
+
+        .input-container {
+          flex: 1;
+          position: relative;
+          font-family: 'Sora';
+        }
+
+        .email-input {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.04);
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          padding: 1rem 1.5rem;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          outline: none;
+          backdrop-filter: blur(20px);
+        }
+
+        .email-input::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+          font-weight: 400;
+        }
+
+        .email-input:focus {
+          border-color: rgba(6, 182, 212, 0.5);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+        }
+
+        .email-input.error {
+          border-color: rgba(239, 68, 68, 0.5);
+          background: rgba(239, 68, 68, 0.05);
+        }
+
+        .submit-btn {
+          background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+          border: none;
+          border-radius: 16px;
+          padding: 1rem 2rem;
+          color: #fff;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          min-width: 140px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
+          background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+        }
+
+        .submit-btn:active:not(:disabled) {
+          transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+          cursor: not-allowed;
+          opacity: 0.8;
+        }
+
+        .joinbutton {
+          fontfamily: 'Sora';
+        }
+
+        .submit-btn.loading {
+          background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+        }
+
+        .submit-btn.success {
+          background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+          animation: successPulse 0.6s ease-out;
+        }
+
+        .loading-spinner {
+          width: 18px;
+          height: 18px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          border-top-color: #fff;
+          animation: spin 1s ease-in-out infinite;
+        }
+
+        .error-message {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin-top: 0.5rem;
+          padding: 0.75rem 1rem;
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.3);
+          border-radius: 12px;
+          color: #fca5a5;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          backdrop-filter: blur(20px);
+        }
+
+        .success-message {
+          margin-top: 1rem;
+          padding: 1rem 1.5rem;
+          background: rgba(16, 185, 129, 0.1);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+          border-radius: 16px;
+          color: #6ee7b7;
+          font-size: 0.95rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          backdrop-filter: blur(20px);
+        }
+
+        .privacy-text {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.6);
+          text-align: center;
+          margin-top: 1rem;
+        }
+
+        .stat-text {
+          font-size: 0.8rem;
+          color: rgba(255, 255, 255, 0.28);
+          text-align: center;
+          margin-bottom: 2rem;
+
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          margin-top: 2rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .feature-pill {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 50px;
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.8);
+          transition: all 0.3s ease;
+          cursor: default;
+        }
+
+        .feature-pill:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(6, 182, 212, 0.3);
+          transform: translateY(-1px);
+        }
+
+        /* Animations */
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes successPulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .newsletter-section {
+            padding: 80px 20px;
+          }
+
+          .form-group {
+            flex-direction: column;
+            gap: 1rem;
+          }
+
+          .submit-btn {
+            width: 100%;
+            justify-content: center;
+          }
+
+          .newsletter-stats {
+            gap: 1rem;
+            flex-direction: row;
+          }
+
+          .stat-divider {
+            height: 30px;
+          }
+
+          .features-grid {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .newsletter-section {
+            padding: 60px 15px;
+          }
+
+          .newsletter-stats {
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+
+          .stat-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+          }
+        }
+
+/* Right Column - Founders Cards */
+.founders-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0px, 6vw, 50px);
+  overflow: hidden;
+  margin-top: 20px;
 }
 
-.input-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  border-radius: 60px;
-  pointer-events: none;
-}
-
-.email-input:focus {
-  border-color: rgba(6, 182, 212, 0.6);
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(6, 182, 212, 0.2);
-}
-
-.email-input:focus + .input-glow {
-  opacity: 1;
-}
-
-.submit-btn {
-  background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+.submitbtn{
+  background: linear-gradient(135deg,rgb(64, 6, 212) 0%, #a855f7 100%);
   border: none;
-  border-radius: 60px;
-  padding: 1.2rem 2.5rem;
+  border-radius: 20px;
+  padding: 1rem 1.8rem;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1rem;
   cursor: pointer;
   display: flex;
@@ -609,9 +699,12 @@ const ModernAnimatedSite = () => {
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+
 }
 
-.submit-btn::before {
+
+  
+.submitbtn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -622,197 +715,13 @@ const ModernAnimatedSite = () => {
   transition: left 0.6s ease;
 }
 
-.submit-btn:hover {
+.submitbtn:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
   background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
 }
 
-.submit-btn:hover::before {
-  left: 100%;
-}
 
-.submit-btn:active {
-  transform: scale(0.98) translateY(-1px);
-}
-
-.submit-btn.success {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-  animation: successPulse 0.6s ease-out;
-}
-
-.arrow {
-  font-size: 1.2rem;
-  font-weight: 400;
-  transition: transform 0.3s ease;
-}
-
-.submit-btn:hover .arrow {
-  transform: translateX(4px);
-}
-
-.form-benefits {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.benefit-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 30px;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.benefit-pill:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(6, 182, 212, 0.3);
-  transform: translateY(-1px);
-}
-
-.benefit-pill svg {
-  color: #06b6d4;
-}
-
-.privacy-text {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: center;
-  font-style: italic;
-}
-
-/* Animations */
-@keyframes ripple {
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes floatNote {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.6;
-  }
-  25% {
-    transform: translateY(-15px) rotate(5deg);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(-8px) rotate(-3deg);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translateY(-12px) rotate(2deg);
-    opacity: 0.9;
-  }
-}
-
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes successPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Enhanced Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .newsletter-section {
-    padding: clamp(80px, 15vw, 120px) 20px;
-    margin: 0 20px;
-  }
-
-  .newsletter-benefits {
-    gap: 1.5rem;
-  }
-
-  .benefit-item {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .form-group {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 20px;
-  }
-
-  .email-input {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .submit-btn {
-    border-radius: 16px;
-    justify-content: center;
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .newsletter-benefits {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .benefit-item {
-    width: 100%;
-    max-width: 220px;
-    justify-content: center;
-  }
-
-  .newsletter-form {
-    max-width: 100%;
-  }
-}
-
-/* Right Column - Founders Cards */
-.founders-right-column {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0px, 6vw, 50px);
-  overflow: hidden;
-}
 
 .founder-card {
   background: rgba(255, 255, 255, 0.03);
@@ -827,20 +736,23 @@ const ModernAnimatedSite = () => {
   backdrop-filter: blur(20px);
 }
 
-.founder-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+
+
+.news-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(2rem, 4vw, 2.5rem);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Sora';
+  backdrop-filter: blur(20px);
 }
 
 .founder-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(0px) scale(1.0);
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(6, 182, 212, 0.4);
   box-shadow: 
@@ -894,7 +806,7 @@ const ModernAnimatedSite = () => {
 
 .founder-name {
   font-size: clamp(1.5rem, 3vw, 1.8rem);
-  font-weight: 600;
+  font-weight: 300;
   color: #fff;
   margin-bottom: 0.5rem;
 }
@@ -910,7 +822,7 @@ const ModernAnimatedSite = () => {
 .founder-bio {
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   position: relative;
   z-index: 10;
@@ -1757,6 +1669,7 @@ const ModernAnimatedSite = () => {
     align-items: center;
     justify-content: center;
     min-height: 80vh;
+    
 }
 
 .story-content {
@@ -1773,7 +1686,7 @@ const ModernAnimatedSite = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 450px;
+    height: 320px;
     width: 380px;
     perspective: 1200px;
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1781,8 +1694,8 @@ const ModernAnimatedSite = () => {
 
 .polaroid-container {
     position: absolute;
-    width: 280px;
-    height: 350px;
+    width: 230px;
+    height: 300px;
     background: linear-gradient(145deg, 
         rgba(248, 248, 248, 0.95), 
         rgba(240, 240, 240, 0.95));
@@ -1837,59 +1750,45 @@ const ModernAnimatedSite = () => {
 }
 
 .polaroid-caption {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center;
     font-size: 1rem;
     color: #333;
     font-weight: 500;
-    line-height: 1.4;
-    font-family: 'Sora', sans-serif;
+    line-height: 0;
+    
+    font-family: 'Written';
     letter-spacing: 0.3px;
+    font-size: 25px;
 }
 
 /* Individual polaroid positioning - Default stacked state */
 .polaroid-container:nth-child(1) {
-    transform: rotate(-8deg) translateY(-15px) translateZ(30px);
-    z-index: 3;
+    transform: translateX(-200px) scale(1.03) rotate(-8deg);
 }
 
 .polaroid-container:nth-child(2) {
-    transform: rotate(3deg) translateY(5px) translateZ(20px);
+    transform: translateX(0) scale(1.06) rotate(2deg);
     z-index: 4;
 }
 
 .polaroid-container:nth-child(3) {
-    transform: rotate(12deg) translateY(10px) translateX(8px) translateZ(10px);
-    z-index: 2;
+    transform: translateX(200px) scale(1.03) rotate(6deg);
 }
 
-/* Hover state - Spread out animation */
+/* Spread out only on the X-axis */
 .polaroid-stack:hover .polaroid-container:nth-child(1) {
-    transform: rotate(-25deg) translateX(-160px) translateY(-50px) translateZ(50px) scale(1.05);
-    box-shadow: 
-        0 35px 70px rgba(0, 0, 0, 0.25),
-        0 15px 35px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    z-index: 5;
+    transform: translateX(-200px) scale(1.03) ;
 }
 
 .polaroid-stack:hover .polaroid-container:nth-child(2) {
-    transform: rotate(0deg) translateY(-60px) translateZ(80px) scale(1.08);
-    box-shadow: 
-        0 40px 80px rgba(0, 0, 0, 0.3),
-        0 20px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    z-index: 6;
+    transform: translateX(0) scale(1.06); /* keep middle one centered */
 }
 
 .polaroid-stack:hover .polaroid-container:nth-child(3) {
-    transform: rotate(28deg) translateX(160px) translateY(-30px) translateZ(40px) scale(1.04);
-    box-shadow: 
-        0 35px 70px rgba(0, 0, 0, 0.25),
-        0 15px 35px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    z-index: 5;
+    transform: translateX(200px) scale(1.03);
 }
+
 
 /* Individual polaroid hover effects */
 .polaroid-container:hover .polaroid-image {
@@ -1908,9 +1807,16 @@ const ModernAnimatedSite = () => {
 .story-text {
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.7;
-    font-size: clamp(1rem, 2vw, 1.15rem);
+
+
     max-width: 800px;
     margin: 0 auto 25px;
+    font-family: 'Sora';
+    text-align: left;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+
+          line-height: 1.6;
 }
 
 .story-title {
@@ -1945,6 +1851,7 @@ const ModernAnimatedSite = () => {
     .polaroid-caption {
         margin-top: 12px;
         font-size: 0.9rem;
+        font-family: 'Written';
     }
 
     /* Adjusted hover positions for mobile */
@@ -2434,7 +2341,19 @@ const ModernAnimatedSite = () => {
             <h1 className="hero-title">NowNoise</h1>
             <h2 className="hero-tagline">your song, in a day</h2>
           </div>
+          <button
+            onClick={() => {
+              document.getElementById("newsletter")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+            className="scrollbtn"
+          >
+            Join the Waitlist
+          </button>
         </div>
+
+        
         
       </section>
 
@@ -2584,122 +2503,10 @@ const ModernAnimatedSite = () => {
           </div>
         </div>
       </section>
-      
-
-      <section className="newsletter-section" ref={addSectionRef}>
-  <div className="section-container">
-    <div className="newsletter-content">
-      <div className="newsletter-visual">
-        <div className="sound-waves">
-          <div className="wave wave-1"></div>
-          <div className="wave wave-2"></div>
-          <div className="wave wave-3"></div>
-          <div className="wave wave-4"></div>
-          <div className="wave wave-5"></div>
-        </div>
-        <div className="vinyl-record">
-          <div className="record-center">
-            <div className="record-hole"></div>
-          </div>
-          <div className="record-grooves">
-            <div className="groove"></div>
-            <div className="groove"></div>
-            <div className="groove"></div>
-            <div className="groove"></div>
-          </div>
-        </div>
-        <div className="floating-notes">
-          <Music className="note note-1" size={20} />
-          <Heart className="note note-2" size={18} />
-          <Sparkles className="note note-3" size={16} />
-          <Music className="note note-4" size={22} />
-          <Users className="note note-5" size={19} />
-        </div>
-      </div>
-      
-      <div className="newsletter-text">
-        <h2 className="newsletter-title">Don't Miss the Drop</h2>
-        <p className="newsletter-description">
-          Join 2,847 music lovers waiting for early access. Be part of the revolution 
-          that's changing how we discover music—one authentic share at a time.
-        </p>
-        <div className="newsletter-stats">
-          <div className="stat-item">
-            <div className="stat-number">2.8K+</div>
-            <div className="stat-label">On waitlist</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-number">50+</div>
-            <div className="stat-label">Beta testers</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-number">∞</div>
-            <div className="stat-label">New discoveries</div>
-          </div>
-        </div>
-      </div>
-      
-      <div className="newsletter-form">
-        <div className="form-wrapper">
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            const email = e.target.email.value;
-            if (email) {
-              // Add success animation
-              const button = e.target.querySelector('.submit-btn');
-              button.classList.add('success');
-              button.innerHTML = '<span>Welcome aboard! 🎵</span>';
-              
-              setTimeout(() => {
-                button.classList.remove('success');
-                button.innerHTML = '<span>Join the Movement</span><div class="arrow">→</div>';
-                e.target.reset();
-              }, 3000);
-            }
-          }}>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="your@email.com"
-                  required
-                  className="email-input"
-                />
-                <div className="input-glow"></div>
-              </div>
-              <button type="submit" className="submit-btn">
-                <span>Join the Movement</span>
-                <div className="arrow">→</div>
-              </button>
-            </div>
-          </form>
-          <div className="form-benefits">
-            <div className="benefit-pill">
-              <Sparkles size={14} />
-              <span>First to know</span>
-            </div>
-            <div className="benefit-pill">
-              <Music size={14} />
-              <span>Beta access</span>
-            </div>
-            <div className="benefit-pill">
-              <Heart size={14} />
-              <span>Exclusive content</span>
-            </div>
-          </div>
-          <p className="privacy-text">
-            Join the music revolution. No spam, just pure discovery. ✨
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
+
+      
       <section className="founders-section" ref={addSectionRef}>
   <div className="section-container">
     <div className="founders-main-grid">
@@ -2707,45 +2514,45 @@ const ModernAnimatedSite = () => {
       {/* Left Column - Title and Story */}
       <div className="founders-left-column">
         <div className="founders-header">
-          <h2 className="founders-title">Our Story</h2>
+          <h2 className="founders-title">Our Backstory</h2>
          
-          <div className="stylized-line"></div>
+          
         </div>
         
    
           <div class="story-content">
     <div class="polaroid-stack">
+        
+
         <div class="polaroid-container">
             <div class="polaroid-image-wrapper">
-                <img src={wc} alt="Will and Charlie making music" class="polaroid-image"></img>
+            <img src={discuss} alt="Will and Charlie making music" class="polaroid-image"></img>
+            </div>
+            <div class="polaroid-caption">sharing music</div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <img src={friends} alt="Will and Charlie making music" class="polaroid-image"></img>
             </div>
             <div class="polaroid-caption">song-making sessions</div>
         </div>
 
         <div class="polaroid-container">
             <div class="polaroid-image-wrapper">
-                <div class="polaroid-placeholder">Late Night Coding</div>
+            <img src={play} alt="Will and Charlie making music" class="polaroid-image"></img>
             </div>
-            <div class="polaroid-caption">building dreams</div>
-        </div>
-
-        <div class="polaroid-container">
-            <div class="polaroid-image-wrapper">
-                <div class="polaroid-placeholder">Music Discovery</div>
-            </div>
-            <div class="polaroid-caption">finding gems</div>
+            <div class="polaroid-caption">listening</div>
         </div>
     </div>
     
     <div>
         <p class="story-text">
-            It started with a simple frustration: why do all streaming platforms play the same predictable music? 
-            As college friends who bonded over late-night music discovery sessions, Will and Charlie realized 
-            the best songs always came from friends, not algorithms.
+        Frustrated by streaming platforms serving the same predictable tracks, high school friends Will and Charlie noticed the best songs always came from friends, not algorithms. 
+        
         </p>
         <p class="story-text">
-            After years of sharing hidden gems with each other, they decided to build a platform where authentic music discovery could happen at scale—
-            where your next favorite song comes from a real person having a real moment, not a machine learning model.
+        After years of swapping hidden gems, they set out to build a platform where real people—not machines—spark authentic music discovery.
         </p>
     </div>
 </div>
@@ -2760,32 +2567,26 @@ const ModernAnimatedSite = () => {
               <img src={will} alt="Will - Co-founder" className="founder-image" />
             </div>
             <div className="founder-info">
-              <h3 className="founder-name">Will</h3>
+              <h3 className="founder-name">William Encarnacion</h3>
               <p className="founder-title-text">Co-founder & Developer</p>
             </div>
           </div>
           <p className="founder-bio">
-            A passionate developer and vinyl collector who believes the best music discoveries happen through 
-            human connection, not algorithms. Will handles the technical magic that makes nowNoise possible, 
-            from smooth user experiences to robust backend systems.
+          A developer and vinyl enthusiast, Will believes the best music is discovered through people, not algorithms. He powers nowNoise with the technical magic behind its seamless experience and reliable systems.
           </p>
-         
-        </div>
+          <div className="stylized-line"></div>
 
-        <div className="founder-card">
           <div className="founder-header">
             <div className="founder-image-container">
               <img src={charles} alt="Charlie - Co-founder" className="founder-image" />
             </div>
             <div className="founder-info">
-              <h3 className="founder-name">Charlie</h3>
+              <h3 className="founder-name">Charlie Ponambalum</h3>
               <p className="founder-title-text">Co-founder & Designer</p>
             </div>
           </div>
           <p className="founder-bio">
-            A creative visionary with an ear for undiscovered talent and an eye for beautiful design. 
-            Charlie shapes nowNoise's aesthetic and user experience, ensuring every interaction feels 
-            intuitive and inspiring for music discovery.
+          A creative visionary with an ear for hidden talent, Charlie leads nowNoise’s branding and storytelling. From shaping the platform’s aesthetic to driving its marketing, he ensures every touchpoint feels authentic and inspiring for music discovery.
           </p>
          
         </div>
@@ -2794,6 +2595,74 @@ const ModernAnimatedSite = () => {
     </div>
   </div>
 </section>
+      
+<section id="newsletter" className="newsletter-section" ref={addSectionRef}>
+  <div className="newsletter-card">
+    <div className="newsletter-container">
+      
+      <h2 className="newsletter-title">Don’t Miss the Drop</h2>
+      <p className="newsletter-description">
+        Join our early community and be the first to explore what’s next in sound.
+      </p>
+
+      <div className="newsletter-stats">
+        <div className="stat-item">
+          <span className="stat-number">94%</span>
+          <span className="stat-label">Approval</span>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <span className="stat-number">20+</span>
+          <span className="stat-label">Beta Testers</span>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <span className="stat-number">∞</span>
+          <span className="stat-label">Discoveries</span>
+        </div>
+      </div>
+
+      <p className="stat-text">Based on a survey of 100+ participants</p>
+
+      <form
+        action="https://formspree.io/f/xdkdvbpp"
+        method="POST"
+        className="form-container"
+      >
+        <div className="form-group">
+          <label className="input-container">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              className="email-input"
+            />
+          </label>
+          <button type="submit" className="submitbtn">
+            Join Now
+          </button>
+        </div>
+      </form>
+
+      <p className="privacy-text">✨ No spam. Just pure updates.</p>
+    </div>
+  </div>
+</section>
+
+
+<footer class="w-full bg-gray-900 text-gray-300 text-center py-6 mt-10">
+  <div class="max-w-4xl mx-auto px-4">
+    <p class="text-sm">
+      <span class="font-semibold text-white">nowNoise</span> — Innovating sound experiences for the future.
+    </p>
+    <p class="text-xs mt-2 text-gray-400">
+      All demo features are prototypes and subject to change without notice.
+    </p>
+  </div>
+</footer>
+
+
 
 
       
