@@ -29,3 +29,11 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Written';
+  src: url('./ReenieBeanie.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
