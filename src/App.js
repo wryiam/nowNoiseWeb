@@ -2586,6 +2586,104 @@ const ModernAnimatedSite = () => {
       </section>
       
 
+
+
+
+      <section className="founders-section" ref={addSectionRef}>
+  <div className="section-container">
+    <div className="founders-main-grid">
+      
+      {/* Left Column - Title and Story */}
+      <div className="founders-left-column">
+        <div className="founders-header">
+          <h2 className="founders-title">Our Story</h2>
+         
+          <div className="stylized-line"></div>
+        </div>
+        
+   
+          <div class="story-content">
+    <div class="polaroid-stack">
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <img src={wc} alt="Will and Charlie making music" class="polaroid-image"></img>
+            </div>
+            <div class="polaroid-caption">song-making sessions</div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <div class="polaroid-placeholder">Late Night Coding</div>
+            </div>
+            <div class="polaroid-caption">building dreams</div>
+        </div>
+
+        <div class="polaroid-container">
+            <div class="polaroid-image-wrapper">
+                <div class="polaroid-placeholder">Music Discovery</div>
+            </div>
+            <div class="polaroid-caption">finding gems</div>
+        </div>
+    </div>
+    
+    <div>
+        <p class="story-text">
+            It started with a simple frustration: why do all streaming platforms play the same predictable music? 
+            As college friends who bonded over late-night music discovery sessions, Will and Charlie realized 
+            the best songs always came from friends, not algorithms.
+        </p>
+        <p class="story-text">
+            After years of sharing hidden gems with each other, they decided to build a platform where authentic music discovery could happen at scale—
+            where your next favorite song comes from a real person having a real moment, not a machine learning model.
+        </p>
+    </div>
+</div>
+
+      </div>
+
+      {/* Right Column - Founder Cards */}
+      <div className="founders-right-column">
+        <div className="founder-card">
+          <div className="founder-header">
+            <div className="founder-image-container">
+              <img src={will} alt="Will - Co-founder" className="founder-image" />
+            </div>
+            <div className="founder-info">
+              <h3 className="founder-name">Will</h3>
+              <p className="founder-title-text">Co-founder & Developer</p>
+            </div>
+          </div>
+          <p className="founder-bio">
+            A passionate developer and vinyl collector who believes the best music discoveries happen through 
+            human connection, not algorithms. Will handles the technical magic that makes nowNoise possible, 
+            from smooth user experiences to robust backend systems.
+          </p>
+         
+        </div>
+
+        <div className="founder-card">
+          <div className="founder-header">
+            <div className="founder-image-container">
+              <img src={charles} alt="Charlie - Co-founder" className="founder-image" />
+            </div>
+            <div className="founder-info">
+              <h3 className="founder-name">Charlie</h3>
+              <p className="founder-title-text">Co-founder & Designer</p>
+            </div>
+          </div>
+          <p className="founder-bio">
+            A creative visionary with an ear for undiscovered talent and an eye for beautiful design. 
+            Charlie shapes nowNoise's aesthetic and user experience, ensuring every interaction feels 
+            intuitive and inspiring for music discovery.
+          </p>
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
       <section className="newsletter-section" ref={addSectionRef}>
   <div className="section-container">
     <div className="newsletter-content">
@@ -2695,102 +2793,6 @@ const ModernAnimatedSite = () => {
           </p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-      <section className="founders-section" ref={addSectionRef}>
-  <div className="section-container">
-    <div className="founders-main-grid">
-      
-      {/* Left Column - Title and Story */}
-      <div className="founders-left-column">
-        <div className="founders-header">
-          <h2 className="founders-title">Our Story</h2>
-         
-          <div className="stylized-line"></div>
-        </div>
-        
-   
-          <div class="story-content">
-    <div class="polaroid-stack">
-        <div class="polaroid-container">
-            <div class="polaroid-image-wrapper">
-                <img src={wc} alt="Will and Charlie making music" class="polaroid-image"></img>
-            </div>
-            <div class="polaroid-caption">song-making sessions</div>
-        </div>
-
-        <div class="polaroid-container">
-            <div class="polaroid-image-wrapper">
-                <div class="polaroid-placeholder">Late Night Coding</div>
-            </div>
-            <div class="polaroid-caption">building dreams</div>
-        </div>
-
-        <div class="polaroid-container">
-            <div class="polaroid-image-wrapper">
-                <div class="polaroid-placeholder">Music Discovery</div>
-            </div>
-            <div class="polaroid-caption">finding gems</div>
-        </div>
-    </div>
-    
-    <div>
-        <p class="story-text">
-            It started with a simple frustration: why do all streaming platforms play the same predictable music? 
-            As college friends who bonded over late-night music discovery sessions, Will and Charlie realized 
-            the best songs always came from friends, not algorithms.
-        </p>
-        <p class="story-text">
-            After years of sharing hidden gems with each other, they decided to build a platform where authentic music discovery could happen at scale—
-            where your next favorite song comes from a real person having a real moment, not a machine learning model.
-        </p>
-    </div>
-</div>
-
-      </div>
-
-      {/* Right Column - Founder Cards */}
-      <div className="founders-right-column">
-        <div className="founder-card">
-          <div className="founder-header">
-            <div className="founder-image-container">
-              <img src={will} alt="Will - Co-founder" className="founder-image" />
-            </div>
-            <div className="founder-info">
-              <h3 className="founder-name">Will</h3>
-              <p className="founder-title-text">Co-founder & Developer</p>
-            </div>
-          </div>
-          <p className="founder-bio">
-            A passionate developer and vinyl collector who believes the best music discoveries happen through 
-            human connection, not algorithms. Will handles the technical magic that makes nowNoise possible, 
-            from smooth user experiences to robust backend systems.
-          </p>
-         
-        </div>
-
-        <div className="founder-card">
-          <div className="founder-header">
-            <div className="founder-image-container">
-              <img src={charles} alt="Charlie - Co-founder" className="founder-image" />
-            </div>
-            <div className="founder-info">
-              <h3 className="founder-name">Charlie</h3>
-              <p className="founder-title-text">Co-founder & Designer</p>
-            </div>
-          </div>
-          <p className="founder-bio">
-            A creative visionary with an ear for undiscovered talent and an eye for beautiful design. 
-            Charlie shapes nowNoise's aesthetic and user experience, ensuring every interaction feels 
-            intuitive and inspiring for music discovery.
-          </p>
-         
-        </div>
-      </div>
-      
     </div>
   </div>
 </section>
