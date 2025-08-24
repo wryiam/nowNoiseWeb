@@ -490,6 +490,526 @@ const ModernAnimatedSite = () => {
           overflow: hidden;
         }
 
+        /* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .founders-main-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .founders-left-column {
+    position: static;
+    order: 1;
+  }
+
+  .founders-right-column {
+    order: 2;
+    gap: 3rem;
+  }
+
+  .founders-story {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .founders-section {
+    padding: clamp(60px, 15vw, 100px) 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .founders-main-grid {
+    gap: 3rem;
+  }
+
+  .founder-card {
+    padding: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .founder-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .founder-image-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .founder-info {
+    text-align: center;
+  }
+
+  .founder-highlights {
+    justify-content: center;
+  }
+
+  .founders-story {
+    padding: clamp(30px, 5vw, 40px);
+  }
+
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .showcase-section {
+    margin-left: 20px;
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding-left: 0px;
+  }
+
+  .showcase-content {
+    order: 2;
+  }
+
+  .phone-showcase {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .phone-container {
+    transform: none;
+    width: clamp(220px, 50vw, 280px);
+    height: clamp(440px, 100vw, 560px);
+  }
+
+  .phone-container:hover {
+    transform: scale(1.02);
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .newsletter-section {
+    padding: 80px 20px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .newsletter-stats {
+    gap: 1rem;
+    flex-direction: row;
+  }
+
+  .stat-divider {
+    height: 30px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .mission-content {
+    order: 2;
+  }
+
+  .algorithm-visualization {
+    order: 1;
+    margin-bottom: 2rem;
+    height: 250px;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mission-section {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  /* Enhanced Responsive Photo Grid - Mission Section */
+  .algorithm-visualization {
+    height: 280px;
+    padding: 1rem;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 8px;
+    width: 100%;
+    max-width: 280px;
+    height: 160px;
+  }
+
+  /* Reset all photos to uniform size and positioning */
+  .photo-item:nth-child(1),
+  .photo-item:nth-child(2),
+  .photo-item:nth-child(3) {
+    width: 100%;
+    height: 100%;
+    grid-column: auto;
+    grid-row: 1;
+    justify-self: stretch;
+    align-self: stretch;
+    margin: 0;
+    z-index: 1;
+    border-radius: 6px;
+  }
+
+  .photo-item:nth-child(1) {
+    grid-column: 1;
+  }
+
+  .photo-item:nth-child(2) {
+    grid-column: 2;
+  }
+
+  .photo-item:nth-child(3) {
+    grid-column: 3;
+  }
+
+  /* Subtle hover effect for mobile */
+  .photo-item:hover {
+    transform: translateY(-2px);
+    z-index: 2;
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Polaroid Stack Responsive */
+  .polaroid-stack {
+    height: 380px;
+    width: 300px;
+    perspective: 800px;
+  }
+
+  .polaroid-container {
+    width: 220px;
+    height: 280px;
+    padding: 15px 15px 45px 15px;
+  }
+
+  .polaroid-image-wrapper {
+    height: 180px;
+  }
+
+  .polaroid-caption {
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .founders-section {
+    padding: clamp(60px, 15vw, 100px) 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .founder-card {
+    padding: 1.25rem;
+  }
+
+  .founder-image-container {
+    width: 90px;
+    height: 90px;
+  }
+
+  .highlight-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .founders-story {
+    padding: clamp(20px, 4vw, 30px);
+  }
+
+  .showcase-section {
+    padding: clamp(60px, 15vw, 100px) 15px;
+    margin-left: 15px;
+  }
+
+  .hero-section {
+    padding: 30px 15px;
+  }
+
+  .phone-container {
+    width: clamp(200px, 60vw, 260px);
+    height: clamp(400px, 120vw, 520px);
+  }
+
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    margin: 0 auto;
+  }
+
+  .newsletter-section {
+    padding: 60px 15px;
+  }
+
+  .newsletter-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  }
+
+  .mission-section {
+    padding: clamp(60px, 15vw, 100px) 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .mission-point {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .point-icon {
+    margin: 0 auto;
+  }
+
+  .newsletter-card {
+    min-width: auto;
+  }
+
+  /* Small mobile photo grid - Compact horizontal layout */
+  .algorithm-visualization {
+    height: 200px;
+    padding: 0.5rem;
+  }
+
+  .photo-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+    max-width: 240px;
+    height: 120px;
+  }
+
+  /* All photos become small uniform squares */
+  .photo-item:nth-child(1),
+  .photo-item:nth-child(2),
+  .photo-item:nth-child(3) {
+    width: 100%;
+    height: 120px;
+    flex: 1;
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    align-self: stretch;
+    margin: 0;
+    z-index: 1;
+    border-radius: 4px;
+  }
+
+  /* Minimal hover effect */
+  .photo-item:hover {
+    transform: scale(1.01);
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.01);
+  }
+
+  /* Polaroid Stack - Mobile */
+  .polaroid-stack {
+    height: 320px;
+    width: 250px;
+  }
+
+  .polaroid-container {
+    width: 180px;
+    height: 230px;
+    padding: 12px 12px 35px 12px;
+  }
+
+  .polaroid-image-wrapper {
+    height: 140px;
+  }
+
+  .polaroid-caption {
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+
+  /* More conservative hover effects on small screens */
+  .polaroid-stack:hover .polaroid-container:nth-child(1) {
+    transform: translateX(-200px) scale(1.03);
+  }
+
+  .polaroid-stack:hover .polaroid-container:nth-child(2) {
+    transform: translateX(0) scale(1.06);
+  }
+
+  .polaroid-stack:hover .polaroid-container:nth-child(3) {
+    transform: translateX(200px) scale(1.03);
+  }
+}
+
+/* Extra small screens - Very compact horizontal layout */
+@media (max-width: 360px) {
+  .algorithm-visualization {
+    height: 160px;
+    padding: 0.25rem;
+  }
+
+  .photo-grid {
+    gap: 4px;
+    max-width: 180px;
+    height: 90px;
+  }
+
+  .photo-item:nth-child(1),
+  .photo-item:nth-child(2),
+  .photo-item:nth-child(3) {
+    height: 90px;
+    border-radius: 3px;
+  }
+
+  /* No hover effects on very small screens */
+  .photo-item:hover {
+    transform: none;
+  }
+
+  .photo-item:hover img {
+    transform: none;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1400px) {
+  .section-container {
+    max-width: 1400px;
+  }
+
+  .showcase-grid {
+    gap: 100px;
+    padding-left: 0px;
+  }
+
+  .phone-container {
+    width: 350px;
+    height: 700px;
+  }
+
+  .founders-section {
+    margin-left: 120px;
+    margin-right: 80px;
+  }
+
+  .mission-section {
+    margin-left: 120px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .photo-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .photo-item:active {
+    transform: scale(0.98);
+  }
+
+  .polaroid-container {
+    transition: transform 0.2s ease;
+  }
+
+  .polaroid-container:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .floating-cursor {
+    display: none;
+  }
+
+  .polaroid-stack,
+  .polaroid-container,
+  .polaroid-image {
+    transition: none;
+  }
+  
+  .polaroid-stack:hover .polaroid-container:nth-child(1),
+  .polaroid-stack:hover .polaroid-container:nth-child(2),
+  .polaroid-stack:hover .polaroid-container:nth-child(3) {
+    transform: scale(1.02);
+  }
+
+  .photo-item,
+  .photo-item img {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .showcase-container {
+    background: #000;
+  }
+
+  .feature-item,
+  .pillar-card,
+  .team-card,
+  .founder-card,
+  .newsletter-card,
+  .mission-point {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
         .submit-btn:hover:not(:disabled) {
           transform: translateY(-2px);
           box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
@@ -720,6 +1240,7 @@ const ModernAnimatedSite = () => {
   box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
   background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
 }
+
 
 
 
@@ -2252,7 +2773,6 @@ const ModernAnimatedSite = () => {
 
         @media (max-width: 480px) {
           .showcase-section,
-          .vision-section,
           .team-section {
             padding: clamp(60px, 15vw, 100px) 15px;
           }
@@ -2441,69 +2961,7 @@ const ModernAnimatedSite = () => {
         </div>
       </section>
 
-      <section className="mission-section" ref={addSectionRef}>
-        <div className="section-container">
-          <div className="mission-grid">
-            <div className="mission-visual">
-  <div className="algorithm-visualization">
-    <div className="photo-stack">
-
-      <div className="photo-item">
-        <img src={record} alt="Will - nowNoise User" />
-      </div>
-      <div className="photo-item">
-        <img src={cds} alt="Charles - nowNoise User" />
-      </div>
-      
-      <div className="photo-item">
-        {/* You can add a third image here or use one of your existing screenshots */}
-        <img src={shop} alt="nowNoise Community" />
-      </div>
-    
-    </div>
-  </div>
-
-            </div>
-            <div className="mission-content">
-              <h2 className="mission-title">Our Mission Against Algorithms</h2>
-              <p className="mission-description">
-                Music streaming platforms trap you in echo chambers, feeding you the same predictable content. 
-                We believe music discovery should be human, spontaneous, and authentic.
-              </p>
-              <div className="mission-points">
-                <div className="mission-point">
-                  <div className="point-icon">
-                    <Sparkles size={24} />
-                  </div>
-                  <div className="point-content">
-                    <h3>Break the Echo Chamber</h3>
-                    <p>Escape the algorithmic bubble that keeps you listening to the same genre, mood, and era.</p>
-                  </div>
-                </div>
-                <div className="mission-point">
-                  <div className="point-icon">
-                    <Users size={24} />
-                  </div>
-                  <div className="point-content">
-                    <h3>Human-Powered Discovery</h3>
-                    <p>Real people with real emotions sharing what moves them right now, not what an AI thinks you'll like.</p>
-                  </div>
-                </div>
-                <div className="mission-point">
-                  <div className="point-icon">
-                    <Zap size={24} />
-                  </div>
-                  <div className="point-content">
-                    <h3>Authentic Moments</h3>
-                    <p>Music that captures genuine feelings and experiences, shared in the moment they matter most.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+   
 
 
       
