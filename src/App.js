@@ -490,648 +490,135 @@ const ModernAnimatedSite = () => {
           overflow: hidden;
         }
 
-        /* Mobile Responsive Styles */
-@media (max-width: 1024px) {
-  .founders-main-grid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  transition: left 0.6s ease;
+}
 
-  .founders-left-column {
-    position: static;
-    order: 1;
-  }
+.submit-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+}
 
-  .founders-right-column {
-    order: 2;
-    gap: 3rem;
-  }
+.submit-btn:hover::before {
+  left: 100%;
+}
 
-  .founders-story {
-    margin-bottom: 2rem;
+.submit-btn:active {
+  transform: scale(0.98) translateY(-1px);
+}
+
+.submit-btn.success {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  animation: successPulse 0.6s ease-out;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.form-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.benefit-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.benefit-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateY(-1px);
+}
+
+.benefit-pill svg {
+  color: #06b6d4;
+}
+
+.privacy-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
   }
 }
 
-@media (max-width: 768px) {
-  .founders-section {
-    padding: clamp(60px, 15vw, 100px) 15px;
-    margin-left: 20px;
-    margin-right: 20px;
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  .founders-main-grid {
-    gap: 3rem;
-  }
-
-  .founder-card {
-    padding: clamp(1.5rem, 4vw, 2rem);
-  }
-
-  .founder-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .founder-image-container {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-  }
-
-  .founder-info {
-    text-align: center;
-  }
-
-  .founder-highlights {
-    justify-content: center;
-  }
-
-  .founders-story {
-    padding: clamp(30px, 5vw, 40px);
-  }
-
-  .hero-section {
-    height: auto;
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
-
-  .showcase-section {
-    margin-left: 20px;
-  }
-
-  .showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
-    padding-left: 0px;
-  }
-
-  .showcase-content {
-    order: 2;
-  }
-
-  .phone-showcase {
-    order: 1;
-    margin-bottom: 2rem;
-  }
-
-  .phone-container {
-    transform: none;
-    width: clamp(220px, 50vw, 280px);
-    height: clamp(440px, 100vw, 560px);
-  }
-
-  .phone-container:hover {
-    transform: scale(1.02);
-  }
-
-  .floating-card {
-    display: none;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .cta-primary,
-  .cta-secondary {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .newsletter-section {
-    padding: 80px 20px;
-  }
-
-  .form-group {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .submit-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .newsletter-stats {
-    gap: 1rem;
-    flex-direction: row;
-  }
-
-  .stat-divider {
-    height: 30px;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .mission-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
-  }
-
-  .mission-content {
-    order: 2;
-  }
-
-  .algorithm-visualization {
-    order: 1;
-    margin-bottom: 2rem;
-    height: 250px;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .mission-section {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  /* Enhanced Responsive Photo Grid - Mission Section */
-  .algorithm-visualization {
-    height: 280px;
-    padding: 1rem;
-  }
-
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    gap: 8px;
-    width: 100%;
-    max-width: 280px;
-    height: 160px;
-  }
-
-  /* Reset all photos to uniform size and positioning */
-  .photo-item:nth-child(1),
-  .photo-item:nth-child(2),
-  .photo-item:nth-child(3) {
-    width: 100%;
-    height: 100%;
-    grid-column: auto;
-    grid-row: 1;
-    justify-self: stretch;
-    align-self: stretch;
-    margin: 0;
-    z-index: 1;
-    border-radius: 6px;
-  }
-
-  .photo-item:nth-child(1) {
-    grid-column: 1;
-  }
-
-  .photo-item:nth-child(2) {
-    grid-column: 2;
-  }
-
-  .photo-item:nth-child(3) {
-    grid-column: 3;
-  }
-
-  /* Subtle hover effect for mobile */
-  .photo-item:hover {
-    transform: translateY(-2px);
-    z-index: 2;
-  }
-
-  .photo-item:hover img {
-    transform: scale(1.03);
-  }
-
-  /* Polaroid Stack Responsive */
-  .polaroid-stack {
-    height: 380px;
-    width: 300px;
-    perspective: 800px;
-  }
-
-  .polaroid-container {
-    width: 220px;
-    height: 280px;
-    padding: 15px 15px 45px 15px;
-  }
-
-  .polaroid-image-wrapper {
-    height: 180px;
-  }
-
-  .polaroid-caption {
-    margin-top: 12px;
-    font-size: 0.9rem;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@media (max-width: 480px) {
-  .founders-section {
-    padding: clamp(60px, 15vw, 100px) 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+@keyframes floatNote {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
   }
-
-  .founder-card {
-    padding: 1.25rem;
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+    opacity: 1;
   }
-
-  .founder-image-container {
-    width: 90px;
-    height: 90px;
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+    opacity: 0.8;
   }
-
-  .highlight-item {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-
-  .founders-story {
-    padding: clamp(20px, 4vw, 30px);
-  }
-
-  .showcase-section {
-    padding: clamp(60px, 15vw, 100px) 15px;
-    margin-left: 15px;
-  }
-
-  .hero-section {
-    padding: 30px 15px;
-  }
-
-  .phone-container {
-    width: clamp(200px, 60vw, 260px);
-    height: clamp(400px, 120vw, 520px);
-  }
-
-  .feature-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .feature-icon {
-    margin: 0 auto;
-  }
-
-  .newsletter-section {
-    padding: 60px 15px;
-  }
-
-  .newsletter-stats {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .stat-divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-  }
-
-  .mission-section {
-    padding: clamp(60px, 15vw, 100px) 15px;
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .mission-point {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .point-icon {
-    margin: 0 auto;
-  }
-
-  .newsletter-card {
-    min-width: auto;
-  }
-
-  /* Small mobile photo grid - Compact horizontal layout */
-  .algorithm-visualization {
-    height: 200px;
-    padding: 0.5rem;
-  }
-
-  .photo-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
-    width: 100%;
-    max-width: 240px;
-    height: 120px;
-  }
-
-  /* All photos become small uniform squares */
-  .photo-item:nth-child(1),
-  .photo-item:nth-child(2),
-  .photo-item:nth-child(3) {
-    width: 100%;
-    height: 120px;
-    flex: 1;
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: stretch;
-    align-self: stretch;
-    margin: 0;
-    z-index: 1;
-    border-radius: 4px;
-  }
-
-  /* Minimal hover effect */
-  .photo-item:hover {
-    transform: scale(1.01);
-  }
-
-  .photo-item:hover img {
-    transform: scale(1.01);
-  }
-
-  /* Polaroid Stack - Mobile */
-  .polaroid-stack {
-    height: 320px;
-    width: 250px;
-  }
-
-  .polaroid-container {
-    width: 180px;
-    height: 230px;
-    padding: 12px 12px 35px 12px;
-  }
-
-  .polaroid-image-wrapper {
-    height: 140px;
-  }
-
-  .polaroid-caption {
-    margin-top: 10px;
-    font-size: 0.8rem;
-  }
-
-  /* More conservative hover effects on small screens */
-  .polaroid-stack:hover .polaroid-container:nth-child(1) {
-    transform: translateX(-200px) scale(1.03);
-  }
-
-  .polaroid-stack:hover .polaroid-container:nth-child(2) {
-    transform: translateX(0) scale(1.06);
-  }
-
-  .polaroid-stack:hover .polaroid-container:nth-child(3) {
-    transform: translateX(200px) scale(1.03);
+  75% {
+    transform: translateY(-12px) rotate(2deg);
+    opacity: 0.9;
   }
 }
 
-/* Extra small screens - Very compact horizontal layout */
-@media (max-width: 360px) {
-  .algorithm-visualization {
-    height: 160px;
-    padding: 0.25rem;
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .photo-grid {
-    gap: 4px;
-    max-width: 180px;
-    height: 90px;
-  }
-
-  .photo-item:nth-child(1),
-  .photo-item:nth-child(2),
-  .photo-item:nth-child(3) {
-    height: 90px;
-    border-radius: 3px;
-  }
-
-  /* No hover effects on very small screens */
-  .photo-item:hover {
-    transform: none;
-  }
-
-  .photo-item:hover img {
-    transform: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-
-/* Large screens optimization */
-@media (min-width: 1400px) {
-  .section-container {
-    max-width: 1400px;
-  }
-
-  .showcase-grid {
-    gap: 100px;
-    padding-left: 0px;
-  }
-
-  .phone-container {
-    width: 350px;
-    height: 700px;
-  }
-
-  .founders-section {
-    margin-left: 120px;
-    margin-right: 80px;
-  }
-
-  .mission-section {
-    margin-left: 120px;
-  }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .photo-item {
-    transition: transform 0.2s ease;
-  }
-  
-  .photo-item:active {
-    transform: scale(0.98);
-  }
-
-  .polaroid-container {
-    transition: transform 0.2s ease;
-  }
-
-  .polaroid-container:active {
-    transform: scale(0.98);
-  }
-}
-
-/* Accessibility - Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .floating-cursor {
-    display: none;
-  }
-
-  .polaroid-stack,
-  .polaroid-container,
-  .polaroid-image {
-    transition: none;
-  }
-  
-  .polaroid-stack:hover .polaroid-container:nth-child(1),
-  .polaroid-stack:hover .polaroid-container:nth-child(2),
-  .polaroid-stack:hover .polaroid-container:nth-child(3) {
-    transform: scale(1.02);
-  }
-
-  .photo-item,
-  .photo-item img {
-    transition: none;
-  }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-  .showcase-container {
-    background: #000;
-  }
-
-  .feature-item,
-  .pillar-card,
-  .team-card,
-  .founder-card,
-  .newsletter-card,
-  .mission-point {
-    border-color: rgba(255, 255, 255, 0.5);
-  }
-}
-
-        .submit-btn:hover:not(:disabled) {
-          transform: translateY(-2px);
-          box-shadow: 0 15px 35px rgba(168, 85, 247, 0.4);
-          background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
-        }
-
-        .submit-btn:active:not(:disabled) {
-          transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-          cursor: not-allowed;
-          opacity: 0.8;
-        }
-
-        .joinbutton {
-          fontfamily: 'Sora';
-        }
-
-        .submit-btn.loading {
-          background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
-        }
-
-        .submit-btn.success {
-          background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-          animation: successPulse 0.6s ease-out;
-        }
-
-        .loading-spinner {
-          width: 18px;
-          height: 18px;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          border-radius: 50%;
-          border-top-color: #fff;
-          animation: spin 1s ease-in-out infinite;
-        }
-
-        .error-message {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          margin-top: 0.5rem;
-          padding: 0.75rem 1rem;
-          background: rgba(239, 68, 68, 0.1);
-          border: 1px solid rgba(239, 68, 68, 0.3);
-          border-radius: 12px;
-          color: #fca5a5;
-          font-size: 0.9rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          backdrop-filter: blur(20px);
-        }
-
-        .success-message {
-          margin-top: 1rem;
-          padding: 1rem 1.5rem;
-          background: rgba(16, 185, 129, 0.1);
-          border: 1px solid rgba(16, 185, 129, 0.3);
-          border-radius: 16px;
-          color: #6ee7b7;
-          font-size: 0.95rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          backdrop-filter: blur(20px);
-        }
-
-        .privacy-text {
-          font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.6);
-          text-align: center;
-          margin-top: 1rem;
-        }
-
-        .stat-text {
-          font-size: 0.8rem;
-          color: rgba(255, 255, 255, 0.28);
-          text-align: center;
-          margin-bottom: 2rem;
-
-        }
-
-        .features-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-          margin-top: 2rem;
-          max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .feature-pill {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          padding: 0.75rem 1.5rem;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 50px;
-          font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.8);
-          transition: all 0.3s ease;
-          cursor: default;
-        }
-
-        .feature-pill:hover {
-          background: rgba(255, 255, 255, 0.06);
-          border-color: rgba(6, 182, 212, 0.3);
-          transform: translateY(-1px);
-        }
-
-        /* Animations */
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
 
         @keyframes successPulse {
           0% {
@@ -1199,50 +686,7 @@ const ModernAnimatedSite = () => {
   flex-direction: column;
   gap: clamp(0px, 6vw, 50px);
   overflow: hidden;
-  margin-top: 20px;
 }
-
-.submitbtn{
-  background: linear-gradient(135deg,rgb(64, 6, 212) 0%, #a855f7 100%);
-  border: none;
-  border-radius: 20px;
-  padding: 1rem 1.8rem;
-  color: #fff;
-  font-weight: 400;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: 'Sora';
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-
-}
-
-
-  
-.submitbtn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-  transition: left 0.6s ease;
-}
-
-.submitbtn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
-}
-
-
-
 
 .founder-card {
   background: rgba(255, 255, 255, 0.03);
@@ -2961,8 +2405,182 @@ const ModernAnimatedSite = () => {
         </div>
       </section>
 
-   
+      <section className="mission-section" ref={addSectionRef}>
+        <div className="section-container">
+          <div className="mission-grid">
+            <div className="mission-visual">
+  <div className="algorithm-visualization">
+    <div className="photo-stack">
 
+      <div className="photo-item">
+        <img src={record} alt="Will - nowNoise User" />
+      </div>
+      <div className="photo-item">
+        <img src={cds} alt="Charles - nowNoise User" />
+      </div>
+      
+      <div className="photo-item">
+        {/* You can add a third image here or use one of your existing screenshots */}
+        <img src={shop} alt="nowNoise Community" />
+      </div>
+    
+    </div>
+  </div>
+
+            </div>
+            <div className="mission-content">
+              <h2 className="mission-title">Our Mission Against Algorithms</h2>
+              <p className="mission-description">
+                Music streaming platforms trap you in echo chambers, feeding you the same predictable content. 
+                We believe music discovery should be human, spontaneous, and authentic.
+              </p>
+              <div className="mission-points">
+                <div className="mission-point">
+                  <div className="point-icon">
+                    <Sparkles size={24} />
+                  </div>
+                  <div className="point-content">
+                    <h3>Break the Echo Chamber</h3>
+                    <p>Escape the algorithmic bubble that keeps you listening to the same genre, mood, and era.</p>
+                  </div>
+                </div>
+                <div className="mission-point">
+                  <div className="point-icon">
+                    <Users size={24} />
+                  </div>
+                  <div className="point-content">
+                    <h3>Human-Powered Discovery</h3>
+                    <p>Real people with real emotions sharing what moves them right now, not what an AI thinks you'll like.</p>
+                  </div>
+                </div>
+                <div className="mission-point">
+                  <div className="point-icon">
+                    <Zap size={24} />
+                  </div>
+                  <div className="point-content">
+                    <h3>Authentic Moments</h3>
+                    <p>Music that captures genuine feelings and experiences, shared in the moment they matter most.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+      <section className="newsletter-section" ref={addSectionRef}>
+  <div className="section-container">
+    <div className="newsletter-content">
+      <div className="newsletter-visual">
+        <div className="sound-waves">
+          <div className="wave wave-1"></div>
+          <div className="wave wave-2"></div>
+          <div className="wave wave-3"></div>
+          <div className="wave wave-4"></div>
+          <div className="wave wave-5"></div>
+        </div>
+        <div className="vinyl-record">
+          <div className="record-center">
+            <div className="record-hole"></div>
+          </div>
+          <div className="record-grooves">
+            <div className="groove"></div>
+            <div className="groove"></div>
+            <div className="groove"></div>
+            <div className="groove"></div>
+          </div>
+        </div>
+        <div className="floating-notes">
+          <Music className="note note-1" size={20} />
+          <Heart className="note note-2" size={18} />
+          <Sparkles className="note note-3" size={16} />
+          <Music className="note note-4" size={22} />
+          <Users className="note note-5" size={19} />
+        </div>
+      </div>
+      
+      <div className="newsletter-text">
+        <h2 className="newsletter-title">Don't Miss the Drop</h2>
+        <p className="newsletter-description">
+          Join 2,847 music lovers waiting for early access. Be part of the revolution 
+          that's changing how we discover music—one authentic share at a time.
+        </p>
+        <div className="newsletter-stats">
+          <div className="stat-item">
+            <div className="stat-number">2.8K+</div>
+            <div className="stat-label">On waitlist</div>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat-item">
+            <div className="stat-number">50+</div>
+            <div className="stat-label">Beta testers</div>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat-item">
+            <div className="stat-number">∞</div>
+            <div className="stat-label">New discoveries</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="newsletter-form">
+        <div className="form-wrapper">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const email = e.target.email.value;
+            if (email) {
+              // Add success animation
+              const button = e.target.querySelector('.submit-btn');
+              button.classList.add('success');
+              button.innerHTML = '<span>Welcome aboard! 🎵</span>';
+              
+              setTimeout(() => {
+                button.classList.remove('success');
+                button.innerHTML = '<span>Join the Movement</span><div class="arrow">→</div>';
+                e.target.reset();
+              }, 3000);
+            }
+          }}>
+            <div className="form-group">
+              <div className="input-wrapper">
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  className="email-input"
+                />
+                <div className="input-glow"></div>
+              </div>
+              <button type="submit" className="submit-btn">
+                <span>Join the Movement</span>
+                <div className="arrow">→</div>
+              </button>
+            </div>
+          </form>
+          <div className="form-benefits">
+            <div className="benefit-pill">
+              <Sparkles size={14} />
+              <span>First to know</span>
+            </div>
+            <div className="benefit-pill">
+              <Music size={14} />
+              <span>Beta access</span>
+            </div>
+            <div className="benefit-pill">
+              <Heart size={14} />
+              <span>Exclusive content</span>
+            </div>
+          </div>
+          <p className="privacy-text">
+            Join the music revolution. No spam, just pure discovery. ✨
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       
       <section className="founders-section" ref={addSectionRef}>
