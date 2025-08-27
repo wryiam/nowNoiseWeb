@@ -9,10 +9,10 @@ import will from './assets/images/will.jpg';
 import ss1 from './assets/images/ss1.png';
 import ss2 from './assets/images/ss2.png';
 import ss3 from './assets/images/ss3.png';
-import record from './assets/images/records.jpeg';
-import cds from './assets/images/cds.jpg';
-import cass from './assets/images/cass.jpg';
-import shop from './assets/images/shop.jpg';
+import cases from './assets/images/cases.jpeg';
+import char from './assets/images/charplay.jpeg';
+import discs from './assets/images/discs.jpeg';
+
 
 import friends from './assets/images/IMG_0914.jpeg'
 import discuss from './assets/images/IMG_4699.jpeg'
@@ -201,6 +201,27 @@ const ModernAnimatedSite = () => {
           animation: fadeInUp 1.5s ease-out 0.5s forwards;
         }
 
+        .submitbtn{
+            background: linear-gradient(135deg,rgba(64, 6, 212, 0.46) 0%,rgba(169, 85, 247, 0.63) 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 1rem 1.8rem;
+            color: #fff;
+            font-weight: 400;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 0.06em;
+            gap: 0.75rem;
+            font-family: 'Sora';
+          }
+
+          .submitbtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+  transition: all 0.3s ease;
+}
+
         .scrollbtn{
             background: linear-gradient(135deg,rgba(64, 6, 212, 0.46) 0%,rgba(169, 85, 247, 0.63) 100%);
             border: none;
@@ -221,10 +242,11 @@ const ModernAnimatedSite = () => {
           }
 
 
-.scrollbtn::hover {
+.scrollbtn:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
   background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+  transition: all 0.3s ease;
 }
 
         .hero-tagline {
@@ -250,13 +272,14 @@ const ModernAnimatedSite = () => {
         /* Enhanced Founders Section Styles */
 .founders-section {
   padding: clamp(80px, 10vw, 140px) 20px;
-  margin-left: 120px;
+  margin-left: 90px;
   position: relative;
   z-index: 5;
         margin-right: 80px;
   opacity: 0;
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(50px);
+
   background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.02) 50%, transparent 100%);
 }
 
@@ -270,34 +293,38 @@ const ModernAnimatedSite = () => {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: clamp(80px, 12vw, 120px);
-  align-items: start;
+
   max-width: 100%;
   margin: 0 auto;
 }
 
 /* Left Column - Text Content */
 .founders-left-column {
-
   top: 0px;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  justify-self: start; /* Add this - aligns the grid item to the start */
+  align-self: start; 
 }
 
-.founders-header {
-  margin-bottom: 0;
-}
+@media (min-width: 1000px) {
+    .founders-left-column{
+    gap: 0rem;}
+
+    }
+
+
 
 .founders-title {
-  font-family: 'Sora';
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
-  font-weight: 250;
-  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  background: linear-gradient(135deg, #ffffff 0%, #a855f7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .founders-subtitle {
@@ -329,238 +356,272 @@ const ModernAnimatedSite = () => {
   background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
 }
 
-.newsletter-card{
+.newsletter-section {
+  padding: clamp(60px, 12vh, 120px) clamp(20px, 5vw, 40px);
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  
+}
+
+.newsletter-container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(107, 126, 219, 0.64);
-  border-radius: 28px;
-  padding: clamp(2rem, 4vw, 2.5rem);
+  border-radius: clamp(16px, 4vw, 28px);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   font-family: 'Sora';
   backdrop-filter: blur(20px);
-  min-width: 1000px;
+  border: 1px solid rgba(107, 126, 219, 0.64);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 16px rgba(107, 126, 219, 0.15);
+
 
 }
 
-.newsletter-section {
-          padding: 120px 20px;
-          position: relative;
-          z-index: 5;
-          
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+.newsletter-title {
+  font-size: 50px;
+  font-weight: 300;
+  background: linear-gradient(135deg, #ffffff 0%, rgb(133, 222, 238) 40%, rgb(179, 110, 244) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-        .newsletter-container {
-          max-width: 1000px;
-          margin: 0 auto;
-          text-align: center;
-        }
-
-        .newsletter-title {
-          font-size: clamp(2.5rem, 6vw, 4rem);
-          font-weight: 300;
-          background: linear-gradient(135deg, #ffffff 0%,rgb(133, 222, 238) 40%,rgb(179, 110, 244) 100%);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          margin-bottom: 1.5rem;
-          line-height: 1.1;
-          padding-top: 30px;
-          padding-bottom: 20px;
-        }
-
-        .newsletter-description {
-          font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-          color: rgba(255, 255, 255, 0.85);
-          margin-bottom: 3rem;
-          line-height: 1.6;
-          max-width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .newsletter-stats {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2.5rem;
-          margin-bottom: 0.8rem;
-          flex-wrap: wrap;
-        }
-
-        .stat-item {
-          text-align: center;
-        }
-
-        .stat-number {
-          font-size: clamp(1.8rem, 4vw, 2.5rem);
-          font-weight: 700;
-          background: linear-gradient(135deg,rgb(220, 52, 209) 0%,rgb(192, 137, 244) 100%);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          margin-bottom: 0.25rem;
-          display: block;
-        }
-
-        .stat-label {
-          font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.6);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-
-        .stat-divider {
-          width: 2px;
-          height: 49px;
-          background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-        }
-
-        .form-container {
-          position: relative;
-          max-width: 500px;
-          margin: 0 auto;
-        }
-
-        .form-group {
-          display: flex;
-          gap: 12px;
-          margin-bottom: 1.5rem;
-          position: relative;
-        }
-
-        .input-container {
-          flex: 1;
-          position: relative;
-          font-family: 'Sora';
-        }
-
-        .email-input {
-          width: 100%;
-          background: rgba(255, 255, 255, 0.04);
-          border: 2px solid rgba(255, 255, 255, 0.1);
-          border-radius: 16px;
-          padding: 1rem 1.5rem;
-          color: #fff;
-          font-size: 1rem;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          outline: none;
-          backdrop-filter: blur(20px);
-        }
-
-        .email-input::placeholder {
-          color: rgba(255, 255, 255, 0.4);
-          font-weight: 400;
-        }
-
-        .email-input:focus {
-          border-color: rgba(6, 182, 212, 0.5);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
-        }
-
-        .email-input.error {
-          border-color: rgba(239, 68, 68, 0.5);
-          background: rgba(239, 68, 68, 0.05);
-        }
-
-        .submit-btn {
-          background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
-          border: none;
-          border-radius: 16px;
-          padding: 1rem 2rem;
-          color: #fff;
-          font-weight: 600;
-          font-size: 1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          transition: all 0.3s ease;
-          white-space: nowrap;
-          min-width: 140px;
-          position: relative;
-          overflow: hidden;
-        }
-
-.submit-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-  transition: left 0.6s ease;
+  line-height: 1.1;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-.submit-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+.newsletter-description {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 15px;
+  line-height: 1.6;
+  max-width: min(500px, 85vw);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.submit-btn:hover::before {
-  left: 100%;
-}
-
-.submit-btn:active {
-  transform: scale(0.98) translateY(-1px);
-}
-
-.submit-btn.success {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-  animation: successPulse 0.6s ease-out;
-}
-
-.arrow {
-  font-size: 1.2rem;
-  font-weight: 400;
-  transition: transform 0.3s ease;
-}
-
-.submit-btn:hover .arrow {
-  transform: translateX(4px);
-}
-
-.form-benefits {
+.newsletter-stats {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+
   flex-wrap: wrap;
 }
 
-.benefit-pill {
+.stat-item {
+  text-align: center;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.stat-number {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, rgb(220, 52, 209) 0%, rgb(192, 137, 244) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.stat-label {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 2px;
+  height: clamp(30px, 6vw, 49px);
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  flex-shrink: 0;
+}
+
+.form-container {
+  position: relative;
+  max-width: min(500px, 90vw);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 16px);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  position: relative;
+  margin-top: 30px;
+}
+
+.input-container {
+  flex: 1;
+  position: relative;
+  font-family: 'Sora';
+  width: 100%;
+}
+
+.email-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: clamp(12px, 3vw, 16px);
+  padding: clamp(0.8rem, 3vw, 1rem) clamp(1rem, 4vw, 1.5rem);
+  color: #fff;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(20px);
+  box-sizing: border-box;
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+.email-input:focus {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+}
+
+.email-input.error {
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+  border: none;
+  border-radius: clamp(12px, 3vw, 16px);
+  padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  color: #fff;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 30px;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
-  cursor: default;
+  white-space: nowrap;
+  min-width: clamp(120px, 25vw, 140px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.benefit-pill:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(6, 182, 212, 0.3);
-  transform: translateY(-1px);
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
 }
 
-.benefit-pill svg {
-  color: #06b6d4;
+.submit-btn:active {
+  transform: translateY(0);
 }
+
+/* Tablet and larger screens */
+@media (min-width: 1000px) {
+  .form-group {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  founders-section{
+        text-align: center;
+  }
+
+  .founders-left-column{
+        gap: 0rem;
+  }
+
+  .founders-title {
+        text-align: center;
+        margin-left: 100px;
+  }
+  
+  .submit-btn {
+    width: auto;
+    flex-shrink: 0;
+  }
+  
+  .newsletter-stats {
+    margin-bottom: 0.8rem;
+  }
+
+  .newsletter-container {
+    max-width: 1000px;
+  }
+
+  .newsletter-section {
+    padding: 120px 40px;
+    width: 100%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .newsletter-section {
+    padding: 120px 40px;
+  }
+  
+  .newsletter-container {
+    max-width: 1000px;
+  }
+  
+  .newsletter-card {
+    min-width: 800px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .newsletter-stats {
+    gap: 1rem;
+  }
+  
+  .stat-divider {
+    display: none;
+  }
+  
+  .newsletter-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1400px) {
+
+}
+
+
 
 .privacy-text {
   font-size: 0.9rem;
@@ -569,17 +630,15 @@ const ModernAnimatedSite = () => {
   font-style: italic;
 }
 
-/* Animations */
-@keyframes ripple {
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
+.stat-text {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-style: italic;
+
+
 }
+
 
 @keyframes spin {
   from {
@@ -633,7 +692,7 @@ const ModernAnimatedSite = () => {
         }
 
         /* Mobile Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           .newsletter-section {
             padding: 80px 20px;
           }
@@ -816,7 +875,14 @@ const ModernAnimatedSite = () => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1002px) {
+        .founders-section {
+          margin-left:10px;
+          margin-right: 10px;
+        }
+}
+
+@media (max-width: 1000px) {
   .founders-section {
     padding: clamp(60px, 15vw, 100px) 15px;
   }
@@ -1014,6 +1080,7 @@ const ModernAnimatedSite = () => {
           flex-direction: column;
           gap: 1rem;
           margin-bottom: 2rem;
+          text-align:left;
         }
 
         .feature-item {
@@ -1141,11 +1208,13 @@ const ModernAnimatedSite = () => {
 .mission-section {
   padding: clamp(80px, 10vw, 140px) 20px;
   position: relative;
+  width: 95%;
+  margin: 0 auto;
   z-index: 5;
   opacity: 0;
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(50px);
-  background: linear-gradient(180deg, transparent 0%, rgba(168, 85, 247, 0.03) 50%, transparent 100%);
+  
   
 }
 
@@ -1159,9 +1228,9 @@ const ModernAnimatedSite = () => {
   grid-template-columns: 1fr 1.2fr;
   gap: clamp(60px, 10vw, 100px);
   align-items: center;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  margin-left: 120px;
+  margin-left: 0px;
 }
 
 /* Replace the existing .algorithm-visualization styles with this: */
@@ -1175,6 +1244,8 @@ const ModernAnimatedSite = () => {
   padding: 2rem;
 }
 
+
+
 .photo-grid {
   position: relative;
   display: grid;
@@ -1184,6 +1255,21 @@ const ModernAnimatedSite = () => {
   width: 300px;
   height: 320px;
   
+}
+  
+.photo-item:nth-child(1) {
+  position: relative;
+  width: 410px;
+  height: 270px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  order: 1;
 }
 
 .photo-item:nth-child(2) {
@@ -1198,23 +1284,10 @@ const ModernAnimatedSite = () => {
     0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
+  order: 2;
 }
 
 
-
-.photo-item:nth-child(1) {
-  position: relative;
-  width: 410px;
-  height: 270px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 10px 25px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
   .photo-item:nth-child(3) {
   position: relative;
   width: 410px;
@@ -1227,6 +1300,7 @@ const ModernAnimatedSite = () => {
     0 0 0 1px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
+  order: 3;
 }
 
 .photo-item img {
@@ -1258,95 +1332,6 @@ const ModernAnimatedSite = () => {
   margin-bottom: -20px;
   z-index: 3;
 }
-/* Enhanced Responsive Photo Grid Styles */
-
-.algorithm-visualization {
-  position: relative;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.photo-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0;
-  width: 300px;
-  height: 320px;
-}
-
-/* Base photo item styles */
-.photo-item {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 10px 25px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* Default desktop sizes - overlapping artistic layout */
-.photo-item:nth-child(1) {
-  width: 410px;
-  height: 270px;
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-  align-self: end;
-  margin-right: 30px;
-  margin-bottom: -20px;
-  z-index: 3;
-}
-
-.photo-item:nth-child(2) {
-  width: 280px;
-  height: 240px;
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start;
-  align-self: end;
-  margin-left: -80px;
-  margin-bottom: 20px;
-  z-index: 2;
-}
-
-.photo-item:nth-child(3) {
-  width: 410px;
-  height: 290px;
-  grid-column: 1 / -1;
-  grid-row: 2;
-  justify-self: center;
-  align-self: start;
-  margin-top: -40px;
-  margin-right: -120px;
-  z-index: 5;
-}
-
-.photo-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.photo-item:hover {
-  transform: scale(1.05);
-  z-index: 10;
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(168, 85, 247, 0.3);
-}
-
-.photo-item:hover img {
-  transform: scale(1.1);
-}
 
 /* Gradient overlays for depth */
 .photo-item::before {
@@ -1366,48 +1351,53 @@ const ModernAnimatedSite = () => {
   opacity: 1;
 }
 
-/* Tablet and below - Switch to uniform grid layout */
-@media (max-width: 768px) {
+/* Tablet and below - Switch to uniform grid layout with changed order */
+@media (max-width: 1000px) {
   .algorithm-visualization {
     height: 320px;
     padding: 1rem;
   }
 
+  .story-text {
+      text-align: center;
+  }
+
   .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 12px;
-    width: 100%;
+    width: 50%;
     max-width: 360px;
     height: 200px;
   }
 
-  /* Reset all photos to uniform size and positioning */
+  /* Reset all photos to uniform size and positioning with new order */
   .photo-item:nth-child(1),
   .photo-item:nth-child(2),
   .photo-item:nth-child(3) {
     width: 100%;
     height: 100%;
-    grid-column: auto;
-    grid-row: 1;
-    justify-self: stretch;
-    align-self: stretch;
     margin: 0;
     z-index: 1;
     border-radius: 8px;
+    /* Reset grid positioning */
+    grid-column: unset;
+    grid-row: unset;
+    justify-self: unset;
+    align-self: unset;
   }
 
+  /* Change the order: 3rd photo first, then 1st, then 2nd */
   .photo-item:nth-child(1) {
-    grid-column: 1;
+    order: 2;
   }
 
   .photo-item:nth-child(2) {
-    grid-column: 2;
+    order: 3;
   }
 
   .photo-item:nth-child(3) {
-    grid-column: 3;
+    order: 1;
   }
 
   /* Subtle hover effect for mobile */
@@ -1418,6 +1408,89 @@ const ModernAnimatedSite = () => {
 
   .photo-item:hover img {
     transform: scale(1.05);
+  }
+}
+
+footer {
+  margin-top: auto;
+  background: linear-gradient(135deg,rgba(17, 24, 39, 0.15) 0%,rgba(31, 41, 55, 0.15) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
+
+}
+
+.footer-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+  text-align: center;   /* centers inline text/elements */
+}
+
+.footer-brand {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
+}
+
+.footer-brand .brand-name {
+  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.footer-disclaimer {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  margin-top: clamp(0.5rem, 2vw, 0.75rem);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.footer-disclaimer:hover {
+  opacity: 1;
+}
+
+/* Alternative sticky footer approach (if flexbox doesn't work with your layout) */
+.sticky-footer-wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px; /* Adjust based on footer height */
+}
+
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .footer-content {
+    text-align: left;
+  }
+  
+  .footer-brand,
+  .footer-disclaimer {
+    text-align: center;
+  }
+
+  founders-left-column{
+  text-align: center;}
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  footer {
+    padding: 1rem 0;
+  }
+  
+  .footer-content {
+    padding: 1rem;
   }
 }
 
@@ -1542,11 +1615,9 @@ const ModernAnimatedSite = () => {
 }
 
 /* Mobile responsive adjustments */
-@media (max-width: 768px) {
-  .photo-grid {
-    width: 250px;
-    height: 270px;
-  }
+@media (max-width: 1000px) {
+
+
 
   .photo-item {
     width: 110px;
@@ -1612,6 +1683,17 @@ const ModernAnimatedSite = () => {
   line-height: 1.2;
 }
 
+.mission-title2 {
+  font-size: 55px;
+  font-weight: 350;
+  background: linear-gradient(135deg, #ffffff 0%, #a855f7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
 .mission-description {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: rgba(255, 255, 255, 0.8);
@@ -1630,9 +1712,7 @@ const ModernAnimatedSite = () => {
     max-width: 1400px;
     margin: 0 auto;
     padding: 80px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
     min-height: 80vh;
     
 }
@@ -1655,6 +1735,12 @@ const ModernAnimatedSite = () => {
     width: 380px;
     perspective: 1200px;
     transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (max-width: 1000px) {
+  .story-text {
+    text-align: center;
+  }
 }
 
 .polaroid-container {
@@ -1768,6 +1854,23 @@ const ModernAnimatedSite = () => {
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+@media (max-width: 1000px) {
+.story-text {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+
+
+    max-width: 800px;
+    margin: 0 auto 25px;
+    font-family: 'Sora';
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+
+          line-height: 1.6;
+}
+}
+
 /* Story text styles */
 .story-text {
     color: rgba(255, 255, 255, 0.85);
@@ -1784,6 +1887,8 @@ const ModernAnimatedSite = () => {
           line-height: 1.6;
 }
 
+
+
 .story-title {
     font-size: clamp(2.5rem, 6vw, 3.5rem);
     font-weight: 250;
@@ -1796,12 +1901,17 @@ const ModernAnimatedSite = () => {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .polaroid-stack {
         height: 380px;
         width: 300px;
         perspective: 800px;
+        padding-left: 0px;
+        margin-left: 0px;
     }
+
+    .mission-title2 {
+    text-align: center;}
 
     .polaroid-container {
         width: 220px;
@@ -1814,8 +1924,8 @@ const ModernAnimatedSite = () => {
     }
 
     .polaroid-caption {
-        margin-top: 12px;
-        font-size: 0.9rem;
+        margin-top: 20px;
+        font-size: 1.4rem;
         font-family: 'Written';
     }
 
@@ -1943,14 +2053,179 @@ const ModernAnimatedSite = () => {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
 }
+  .mission-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+
+  padding: 1rem;
+}
+
+.photo-grid {
+  position: relative;
+  width: 200%;
+  height: 550px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  grid-template-areas: 
+    "main top"
+    "main bottom";
+}
+
+.case-photo {
+  grid-area: main;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.case-photo:hover {
+  transform: rotate(2deg) translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+}
+
+.charplay {
+  grid-area: top;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.charplay:hover {
+  transform: rotate(-1deg) translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.discs {
+  grid-area: bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.discs:hover {
+  transform: rotate(3deg) translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Add a subtle overlay effect */
+.photo-grid::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .mission-visual {
+    max-height: 100px;
+    margin-bottom: 100px;
+  }
+
+  .mission-title, .mission-description{
+        text-align: center;
+  }
+  
+  .photo-grid {
+    display: flex;
+    flex-direction: row; /* makes it a row */
+    gap: 12px;
+    width: 50%;
+    max-width: 360px;
+    height: 200px;
+    margin-left: 0px;
+    padding-left: 0px
+  
+  }
+
+  .mission-visual {
+  margin-left: 0px;
+    padding-left: 0px
+  }
+
+  .mission-grid {
+  margin-left: 0px;
+    padding-left: 0px
+    }
+
+    
+    
+  .case-photo,
+  .charplay,
+  .discs {
+    border-radius: 12px;
+  }
+  
+  .charplay {
+
+  }
+  
+  .discs {
+
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-visual {
+    min-height: 400px;
+    padding: 0.5rem;
+  }
+  
+  .photo-grid {
+    height: 380px;
+    gap: 1rem;
+  }
+  
+  .charplay,
+  .discs {
+    transform: none;
+  }
+  
+  .charplay:hover,
+  .discs:hover {
+    transform: scale(1.02);
+  }
+}
 
 /* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .mission-grid, .newsletter-content {
+@media (max-width: 1000px) {
+  .photo-grid, .mission-grid, .newsletter-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
+    gap: 2rem;
+    justify-content: center;
+    margin-left: 10px;
   }
+
+
+
 
   .mission-content {
     order: 2;
@@ -2000,10 +2275,21 @@ const ModernAnimatedSite = () => {
   }
 }
 
+@media (max-width: 1000px) {
+        .mission-section {
+        width:100%;
+          }
+}
+
 @media (max-width: 480px) {
   .mission-section,
   .newsletter-section {
     padding: clamp(60px, 15vw, 100px) 15px;
+    
+  }
+
+  .mission-section {
+        margin-left: 0px;
   }
 
   .mission-point {
@@ -2155,11 +2441,15 @@ const ModernAnimatedSite = () => {
         }
 
         /* Mobile-First Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
           .hero-section {
             height: auto;
             min-height: 100vh;
             padding: 40px 20px;
+          }
+
+          .feature-icon{
+            margin-top: 30px;
           }
 
           .showcase-grid {
@@ -2215,36 +2505,174 @@ const ModernAnimatedSite = () => {
           }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 770px) {
+          .showcase-section {
+            padding-left: 0px;
+            margin-left: 20px;
+          
+          }  
+        }
+
+        .body {
+          overflow-x: hidden;
+        }
+
+        @media (max-width: 600px) {
           .showcase-section,
           .team-section {
-            padding: clamp(60px, 15vw, 100px) 15px;
+            
+            padding-left: 0px;
+            margin-left: 0px;
+            padding-right: 0px;
+            margin-right: 0px;
+
           }
 
           .hero-section {
             padding: 30px 15px;
           }
 
+
+          /*app showcase area*/
           .phone-container {
-            width: clamp(200px, 60vw, 260px);
-            height: clamp(400px, 120vw, 520px);
+            width: 150px;
+            height: 300px;
+            margin-left: 0px;
+            margin-right: 0px;
+            
+          }
+
+          .showcase-title {
+            font-family : 'Sora';
+            font-size: 35px;
+            font-weight: 300;
+            background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+          }
+
+          .showcase-grid{
+            gap: 0rem;
+          }
+
+          .showcase-description {
+              display: none;
+
+          }
+
+          .showcase-description-compact {
+            margin-bottom: 1.5rem;
+            padding-left:10px;
+            padding-right:  10px;
+          }
+
+          .feature-list {
+            gap: 0.8rem;
+            flex-direction: row;
+            width: 100%;
+            max-width: 100vw;  /* keep inside screen */
+            overflow-x: hidden;
+            flex-wrap: wrap;
+          }
+
+
+
+          .point-icon {
+              width: 50px;
+              height: 50px;
+              border: 1px solid rgba(176, 142, 208, 0.3);
+            }
+
+
+          .feature-text h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+
+            background: linear-gradient(135deg,rgb(210, 109, 207) 0%,rgb(201, 129, 212) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .feature-text p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            line-height: 1.5;
           }
 
           .feature-item {
-            flex-direction: column;
+            flex-direction: row;
             text-align: center;
-            gap: 1rem;
+            gap: 0.3rem;
+            padding: 1rem;
+            margin-left: 10px;
+            margin-right: 10px;
+
           }
+
 
           .feature-icon {
             margin: 0 auto;
           }
+
+
+          /*mission for small*/
+          
+            .photo-grid {
+              position: relative;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              grid-template-rows: repeat(2, 1fr);
+              gap: 0.5rem;
+              width: 280px;
+              height: 290px;
+
+              
+            }
+
+                .mission-section {
+                width: 100%;
+                }
+
+                .mission-grid{
+                        margin-left:0px;
+                        padding-bottom: 0px;
+                        padding-top: 0px;
+                        gap: 0rem;
+                        
+
+                }
+
+                .mission-visual {
+                        margin-bottom: 0px;
+                        padding:0px;
+                        max-height: 50px;
+                        padding-right: 0px;
+                }
+                    
+                  .mission-description {
+                  margin-bottom: 1.1rem;
+                  }
+
+                  .mission-title {
+                  margin-bottom: 1.1rem;
+                  }
+
+     
+
         }
+
+
 
         /* Large screens optimization */
         @media (min-width: 1400px) {
           .section-container {
-            max-width: 1400px;
+
+          
           }
 
           .showcase-grid {
@@ -2328,35 +2756,42 @@ const ModernAnimatedSite = () => {
             <div className="showcase-content">
               <h2 className="showcase-title">What is nowNoise?</h2>
               <p className="showcase-description">
-                Break free from the same old playlist — nowNoise uncovers hidden gems 
-                and rising artists that will transform your music taste through authentic human connections.
+                nowNoise is the social music app, designed for sharing the songs you're currently
+                listening to, exploring hidden gems from others, and connecting through authentic, real-time
+                disovery.
+              </p>
+              <p className="showcase-description-compact">
+                Share your vibe. Discover something new. Connect through music
               </p>
               <div className="feature-list">
                 <div className="feature-item">
-                  <div className="feature-icon">
+                  <div className="point-icon">
                     <Music size={20} />
                   </div>
                   <div className="feature-text">
-                    <h3>Music Discovery</h3>
-                    <p>Break free from the same old playlist — nowNoise uncovers hidden gems and rising artists that will transform your music taste.</p>
+                    <h3>Real-Time Sharing</h3>
+                    <p>Share the song you're vibing to right now, unfiltered</p>
                   </div>
                 </div>
                 <div className="feature-item">
-                  <div className="feature-icon">
+                  <div className="point-icon">
                     <Heart size={20} />
                   </div>
                   <div className="feature-text">
-                    <h3>Share your Music</h3>
-                    <p>In a world of curated playlists and polished feeds, nowNoise is where you drop the mask. Share the song you're living with right now — raw, real, and unfiltered.</p>
+                    <h3>Discover Hidden Gems</h3>
+                    <p>
+                      Explore rising artists, trending tracks, and most importantly, the
+                      tracks your friends love.
+                    </p>
                   </div>
                 </div>
                 <div className="feature-item">
-                  <div className="feature-icon">
+                  <div className="point-icon">
                     <Users size={20} />
                   </div>
                   <div className="feature-text">
-                    <h3>Connect with Like-Minded Listeners</h3>
-                    <p>Discover people who share your unique taste. Build connections through the music you love, and explore what others are vibing to in real time.</p>
+                    <h3>Connect Through Music</h3>
+                    <p>Build authentic connections with like minded-listeners</p>
                   </div>
                 </div>
               </div>
@@ -2409,178 +2844,58 @@ const ModernAnimatedSite = () => {
         <div className="section-container">
           <div className="mission-grid">
             <div className="mission-visual">
-  <div className="algorithm-visualization">
-    <div className="photo-stack">
-
-      <div className="photo-item">
-        <img src={record} alt="Will - nowNoise User" />
-      </div>
-      <div className="photo-item">
-        <img src={cds} alt="Charles - nowNoise User" />
-      </div>
-      
-      <div className="photo-item">
-        {/* You can add a third image here or use one of your existing screenshots */}
-        <img src={shop} alt="nowNoise Community" />
-      </div>
-    
-    </div>
-  </div>
+              <div className='photo-grid'>
+              <img src={cases} className='charplay'></img>
+                    <img src={char} className='case-photo'></img>
+                    
+                    <img src={discs} className='discs'></img>
+              </div>
+  
 
             </div>
             <div className="mission-content">
               <h2 className="mission-title">Our Mission Against Algorithms</h2>
               <p className="mission-description">
-                Music streaming platforms trap you in echo chambers, feeding you the same predictable content. 
-                We believe music discovery should be human, spontaneous, and authentic.
+                We believe music discovery should be human, spontaneous and real. nowNoise puts people,
+                not machines, at the center of music.
               </p>
-              <div className="mission-points">
-                <div className="mission-point">
+
+              <div className="feature-list">
+                <div className="feature-item">
                   <div className="point-icon">
-                    <Sparkles size={24} />
+                  <Sparkles size={20} />
                   </div>
-                  <div className="point-content">
-                    <h3>Break the Echo Chamber</h3>
-                    <p>Escape the algorithmic bubble that keeps you listening to the same genre, mood, and era.</p>
+                  <div className="feature-text">
+                    <h3>Discover Without Playlists</h3>
+                    <p>Break out of the algorithm loop and uncover music that truly surprises you.</p>
                   </div>
                 </div>
-                <div className="mission-point">
+                <div className="feature-item">
                   <div className="point-icon">
-                    <Users size={24} />
+                    <Users size={20} />
                   </div>
-                  <div className="point-content">
-                    <h3>Human-Powered Discovery</h3>
-                    <p>Real people with real emotions sharing what moves them right now, not what an AI thinks you'll like.</p>
+                  <div className="feature-text">
+                    <h3>Share Without Filters</h3>
+                    <p>Drop the track you’re living with right now - raw, real, and unpolished.</p>
                   </div>
                 </div>
-                <div className="mission-point">
+                <div className="feature-item">
                   <div className="point-icon">
-                    <Zap size={24} />
+                    <Zap size={20} />
                   </div>
-                  <div className="point-content">
-                    <h3>Authentic Moments</h3>
-                    <p>Music that captures genuine feelings and experiences, shared in the moment they matter most.</p>
+                  <div className="feature-text">
+                    <h3>Connect Without Noise</h3>
+                    <p>Find people who share your taste and connect through music that matters.</p>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
       
 
-      <section className="newsletter-section" ref={addSectionRef}>
-  <div className="section-container">
-    <div className="newsletter-content">
-      <div className="newsletter-visual">
-        <div className="sound-waves">
-          <div className="wave wave-1"></div>
-          <div className="wave wave-2"></div>
-          <div className="wave wave-3"></div>
-          <div className="wave wave-4"></div>
-          <div className="wave wave-5"></div>
-        </div>
-        <div className="vinyl-record">
-          <div className="record-center">
-            <div className="record-hole"></div>
-          </div>
-          <div className="record-grooves">
-            <div className="groove"></div>
-            <div className="groove"></div>
-            <div className="groove"></div>
-            <div className="groove"></div>
-          </div>
-        </div>
-        <div className="floating-notes">
-          <Music className="note note-1" size={20} />
-          <Heart className="note note-2" size={18} />
-          <Sparkles className="note note-3" size={16} />
-          <Music className="note note-4" size={22} />
-          <Users className="note note-5" size={19} />
-        </div>
-      </div>
-      
-      <div className="newsletter-text">
-        <h2 className="newsletter-title">Don't Miss the Drop</h2>
-        <p className="newsletter-description">
-          Join 2,847 music lovers waiting for early access. Be part of the revolution 
-          that's changing how we discover music—one authentic share at a time.
-        </p>
-        <div className="newsletter-stats">
-          <div className="stat-item">
-            <div className="stat-number">2.8K+</div>
-            <div className="stat-label">On waitlist</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-number">50+</div>
-            <div className="stat-label">Beta testers</div>
-          </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <div className="stat-number">∞</div>
-            <div className="stat-label">New discoveries</div>
-          </div>
-        </div>
-      </div>
-      
-      <div className="newsletter-form">
-        <div className="form-wrapper">
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            const email = e.target.email.value;
-            if (email) {
-              // Add success animation
-              const button = e.target.querySelector('.submit-btn');
-              button.classList.add('success');
-              button.innerHTML = '<span>Welcome aboard! 🎵</span>';
-              
-              setTimeout(() => {
-                button.classList.remove('success');
-                button.innerHTML = '<span>Join the Movement</span><div class="arrow">→</div>';
-                e.target.reset();
-              }, 3000);
-            }
-          }}>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <input 
-                  type="email" 
-                  name="email"
-                  placeholder="your@email.com"
-                  required
-                  className="email-input"
-                />
-                <div className="input-glow"></div>
-              </div>
-              <button type="submit" className="submit-btn">
-                <span>Join the Movement</span>
-                <div className="arrow">→</div>
-              </button>
-            </div>
-          </form>
-          <div className="form-benefits">
-            <div className="benefit-pill">
-              <Sparkles size={14} />
-              <span>First to know</span>
-            </div>
-            <div className="benefit-pill">
-              <Music size={14} />
-              <span>Beta access</span>
-            </div>
-            <div className="benefit-pill">
-              <Heart size={14} />
-              <span>Exclusive content</span>
-            </div>
-          </div>
-          <p className="privacy-text">
-            Join the music revolution. No spam, just pure discovery. ✨
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
       
       <section className="founders-section" ref={addSectionRef}>
@@ -2589,15 +2904,10 @@ const ModernAnimatedSite = () => {
       
       {/* Left Column - Title and Story */}
       <div className="founders-left-column">
-        <div className="founders-header">
-          <h2 className="founders-title">Our Backstory</h2>
-         
-          
-        </div>
-        
-   
-          <div class="story-content">
-    <div class="polaroid-stack">
+          <h2 className="mission-title2">Our Backstory</h2>
+
+            <div class="story-content">
+      <div class="polaroid-stack">
         
 
         <div class="polaroid-container">
@@ -2676,7 +2986,7 @@ const ModernAnimatedSite = () => {
   <div className="newsletter-card">
     <div className="newsletter-container">
       
-      <h2 className="newsletter-title">Don’t Miss the Drop</h2>
+      <h2 className="newsletter-title">Don't Miss the Drop</h2>
       <p className="newsletter-description">
         Join our early community and be the first to explore what’s next in sound.
       </p>
@@ -2721,18 +3031,18 @@ const ModernAnimatedSite = () => {
         </div>
       </form>
 
-      <p className="privacy-text">✨ No spam. Just pure updates.</p>
+      <p className="privacy-text">No spam. Just pure updates. Opt out anytime.</p>
     </div>
   </div>
 </section>
 
 
-<footer class="w-full bg-gray-900 text-gray-300 text-center py-6 mt-10">
-  <div class="max-w-4xl mx-auto px-4">
-    <p class="text-sm">
-      <span class="font-semibold text-white">nowNoise</span> — Innovating sound experiences for the future.
+<footer class="w-full text-gray-300 text-center py-6">
+  <div class="footer-content">
+    <p class="footer-brand">
+      <span class="brand-name">nowNoise</span> — Innovating sound experiences for the future.
     </p>
-    <p class="text-xs mt-2 text-gray-400">
+    <p class="footer-disclaimer">
       All demo features are prototypes and subject to change without notice.
     </p>
   </div>
