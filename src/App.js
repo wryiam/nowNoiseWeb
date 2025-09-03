@@ -212,6 +212,102 @@ const options = {
     <div className="showcase-container">
       <style>{`
 
+      .scroll-arrow {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInBounce 2s ease-out 1.5s forwards;
+  color: #a855f7;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+  transition: all 0.3s ease;
+}
+
+
+.scroll-arrow svg {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;
+    transform: translateX(0%) translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%) translateY(0);
+  }
+}
+
+      .email-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 2.5rem);
+
+  flex-wrap: wrap;
+}
+
+.email-item {
+  text-align: center;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.email-number {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, rgb(220, 52, 209) 0%, rgb(192, 137, 244) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.email-label {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.email-divider {
+  width: 2px;
+  height: clamp(30px, 6vw, 49px);
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  flex-shrink: 0;
+}
+
+@media (max-width:768px){
+  .email-number {
+    font-size: 1.3rem;
+    font-weight: 500;
+   
+    margin-bottom: 0rem;
+
+  }
+
+  .email-stats{
+        gap : 0.8rem;
+  }
+}
+
 
           .founder-bio-compact {
           display:none;
@@ -599,7 +695,7 @@ const options = {
 .newsletter-title {
   font-size: 50px;
   font-weight: 300;
-  background: linear-gradient(135deg, #ffffff 0%, rgb(133, 222, 238) 40%, rgb(179, 110, 244) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, rgba(199, 133, 238, 1) 40%, rgb(179, 110, 244) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -994,18 +1090,6 @@ margin: 0 auto;}
   font-family: 'Sora';
   backdrop-filter: blur(20px);
 }
-.founder-card:hover {
-  transform: translateY(0px) scale(1.0);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(6, 182, 212, 0.15);
-}
-
-.founder-card:hover::before {
-  opacity: 1;
-}
 
 
 
@@ -1041,10 +1125,7 @@ margin: 0 auto;}
   flex-shrink: 0;
 }
 
-.founder-card:hover .founder-image-container {
-  border-color: rgba(6, 182, 212, 0.6);
-  transform: scale(1.05);
-}
+
 
 .founder-image {
   width: 100%;
@@ -1053,9 +1134,7 @@ margin: 0 auto;}
   transition: transform 0.3s ease;
 }
 
-.founder-card:hover .founder-image {
-  transform: scale(1.1);
-}
+
 
 .founder-info {
   flex: 1;
@@ -3543,7 +3622,7 @@ display: none}
                         
                           line-height: 1.1;
                           padding-top: 10px;
-                          padding-bottom: 20px;
+                          padding-bottom: 10px;
                         }
 
                         .newsletter-description {
@@ -3553,6 +3632,7 @@ display: none}
                           max-width: 100vw;
                           margin-left: auto;
                           margin-right: auto;
+                          font-weight: 100;
                         }
 
                         .newsletter-stats {
@@ -3935,11 +4015,7 @@ display: none}
                             flex-shrink: 0;
                           }
 
-                          .founder-card:hover .founder-image-container {
-                            border-color: rgba(6, 182, 212, 0.6);
-                            transform: scale(1.05);
-                            
-                          }
+                   
 
                           .founder-image {
                             width: 100%;
@@ -3948,9 +4024,7 @@ display: none}
                             transition: transform 0.3s ease;
                           }
 
-                          .founder-card:hover .founder-image {
-                            transform: scale(1.1);
-                          }
+                    
 
                           .founder-info {
                             flex: 1;
@@ -4274,14 +4348,26 @@ display: none}
           >
             Join the Waitlist
           </button>
+
+          
         </div>
+
+        <div className="scroll-arrow" onClick={() => {
+    document.getElementById("showcase")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}>
+    <ChevronDown size={32} />
+  </div>
 
         
         
       </section>
 
+      
+
       {/* App Showcase Section */}
-      <section className="showcase-section" ref={addSectionRef}>
+      <section id="showcase" className="showcase-section" ref={addSectionRef}>
         <div className="section-container">
           <div className="showcase-grid">
             <div className="showcase-content">
@@ -4829,21 +4915,22 @@ display: none}
         Join our early community and be the first to explore what’s next in sound.
       </p>
 
-      <div className="newsletter-stats">
-        <div className="stat-item">
-          <span className="stat-number">94%</span>
-          <span className="stat-label">Approval</span>
+      <div className="email-stats">
+        <div className="email-item">
+          <span className="email-number">94%</span>
+          <span className="email-label">Approval</span>
         </div>
-        <div className="stat-divider"></div>
-        <div className="stat-item">
-          <span className="stat-number">20+</span>
-          <span className="stat-label">Beta Testers</span>
+        <div className="email-divider"></div>
+        <div className="email-item">
+          <span className="email-number">20+</span>
+          <span className="email-label">beta testers</span>
         </div>
-        <div className="stat-divider"></div>
-        <div className="stat-item">
-          <span className="stat-number">∞</span>
-          <span className="stat-label">Discoveries</span>
+        <div className="email-divider"></div>
+        <div className="email-item">
+          <span className="email-number">100M+</span>
+          <span className="email-label">tracks</span>
         </div>
+        
       </div>
 
       <p className="stat-text">Based on a survey of 100+ participants</p>
@@ -4869,10 +4956,7 @@ display: none}
         </div>
       </form>
 
-      <p className="privacy-text">No spam. Just pure updates. Opt out anytime.</p>
-         
-          
-
+     
         
  
           
