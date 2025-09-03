@@ -272,8 +272,7 @@ const options = {
 .email-number {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 700;
-  background: linear-gradient(135deg, rgb(220, 52, 209) 0%, rgb(192, 137, 244) 100%);
-  background-clip: text;
+  background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.25rem;
@@ -296,11 +295,15 @@ const options = {
 
 @media (max-width:768px){
   .email-number {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
    
     margin-bottom: 0rem;
 
+  }
+
+  .email-label{
+        font-size: 0.6rem;
   }
 
   .email-stats{
@@ -363,7 +366,7 @@ const options = {
 
 
         .showcase-description-compact {
-                        margin-bottom: 1.5rem;
+                        margin-bottom: 0.8rem;
                         padding-left:10px;
                         padding-right:  10px;
                         margin-left: 6%;
@@ -507,9 +510,9 @@ const options = {
           }
 
           .submitbtn:hover {
-  transform: translateY(-3px) scale(1.02);
+
   box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-  background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+
   transition: all 0.3s ease;
 }
 
@@ -695,7 +698,7 @@ const options = {
 .newsletter-title {
   font-size: 50px;
   font-weight: 300;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(199, 133, 238, 1) 40%, rgb(179, 110, 244) 100%);
+  background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -735,7 +738,7 @@ margin: 0 auto;}
   border: 1px solid rgba(151, 100, 202, 0.26);
   border-radius: 16px;
   transition: all 0.3s ease;
-  cursor: pointer;
+  cursor: default;
   position: relative;
   overflow: hidden;
 }
@@ -819,6 +822,7 @@ margin: 0 auto;}
   .feature-item-list {
     width: min(350px, 95vw);
     padding: 0.6rem;
+    cursor: default;
   }
   
   .stat-divider {
@@ -835,6 +839,7 @@ margin: 0 auto;}
   .feature-item-list {
     width: 95vw;
     padding: 0.5rem;
+    cursor: default;
   }
   
   .stat-number {
@@ -860,9 +865,9 @@ margin: 0 auto;}
 
 .form-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: clamp(12px, 3vw, 16px);
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+
   position: relative;
   margin-top: 30px;
 }
@@ -876,9 +881,11 @@ margin: 0 auto;}
 
 .email-input::placeholder {
   font-family: 'Sora', sans-serif;
+  font-style: italic;
 }
 
 .email-input {
+    font-family: 'Sora';
   
 
 }
@@ -911,9 +918,9 @@ margin: 0 auto;}
 }
 
 .email-input:focus {
-  border-color: rgba(6, 182, 212, 0.5);
+  border-color: rgba(205, 6, 212, 0.5);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 18px rgba(6, 182, 212, 0.15);
 }
 
 .email-input.error {
@@ -1086,7 +1093,7 @@ margin: 0 auto;}
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   font-family: 'Sora';
   backdrop-filter: blur(20px);
 }
@@ -1151,7 +1158,8 @@ margin: 0 auto;}
 
 .founder-title-text {
   font-size: 1rem;
-  color: #06b6d4;
+  color: #a855f7;
+
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1249,53 +1257,6 @@ margin: 0 auto;}
 
 }
 
-        .hero-cta {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          flex-wrap: wrap;
-          opacity: 0;
-          animation: fadeInUp 1.5s ease-out 1.5s forwards;
-        }
-
-        .cta-primary, .cta-secondary {
-          padding: 1rem 2rem;
-          border-radius: 50px;
-          font-weight: 600;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 160px;
-          text-decoration: none;
-          border: none;
-        }
-
-        .cta-primary {
-          background: linear-gradient(135deg, #a855f7 0%, #06b6d4 100%);
-          color: #fff;
-        }
-
-        .cta-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-        }
-
-        .cta-secondary {
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: #fff;
-          backdrop-filter: blur(20px);
-        }
-
-        .cta-secondary:hover {
-          border-color: rgba(255, 255, 255, 0.4);
-          background: rgba(255, 255, 255, 0.05);
-        }
 
         .scroll-indicator {
           position: absolute;
@@ -1408,7 +1369,7 @@ margin: 0 auto;}
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 16px;
           transition: all 0.3s ease;
-          cursor: pointer;
+          cursor: default;
           position: relative;
           overflow: hidden;
           align-items: center;
@@ -1440,16 +1401,6 @@ margin: 0 auto;}
           background: linear-gradient(180deg, #a855f7, #06b6d4);
           opacity: 0;
           transition: opacity 0.3s ease;
-        }
-
-        .feature-item:hover {
-          background: rgba(255, 255, 255, 0.08);
-          border-color: rgba(168, 85, 247, 0.5);
-          transform: translateX(8px);
-        }
-
-        .feature-item:hover::before {
-          opacity: 1;
         }
 
         .feature-icon {
@@ -1551,6 +1502,7 @@ margin: 0 auto;}
   transform: translateY(50px);
   margin-left: 7%;
   margin-right:7%;
+  min-height: 120vh;
 
   
   
@@ -1771,14 +1723,18 @@ footer {
 .footer-brand {
   font-size: clamp(0.875rem, 2.5vw, 1rem);
   line-height: 1.6;
+  font-weight: 400;
+  
+  
 }
 
 .footer-brand .brand-name {
-  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ae63ebff 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 600;
+
+  
 }
 
 .brand-name2 {
@@ -1797,9 +1753,7 @@ footer {
   transition: opacity 0.3s ease;
 }
 
-.footer-disclaimer:hover {
-  opacity: 1;
-}
+
 
 /* Alternative sticky footer approach (if flexbox doesn't work with your layout) */
 .sticky-footer-wrapper {
@@ -1995,6 +1949,7 @@ footer {
   padding: clamp(80px, 10vw, 140px) 20px;
   position: relative;
   width: 100%;
+  min-height: 120vh;
 
   
   margin: 0 auto;
@@ -2604,7 +2559,7 @@ margin-right: 13px;}}
     margin: 0 auto;
     padding: 80px 20px;
 
-    min-height: 80vh;
+    min-height: 120vh;
     
 }
 
@@ -3197,7 +3152,7 @@ display: none}
   }
 
   .how-it-works-title {
-      font-size: 35px;
+      font-size: 28px;
       }
 
 
@@ -3241,7 +3196,9 @@ display: none}
   .form-group {
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
     border-radius: 20px;
   }
 
@@ -3588,9 +3545,17 @@ display: none}
               
             }
 
-            .footer-brand {
+            .footer-brand, .footer-brand2{
 
-              font-weight: 300;
+              font-weight: 200;
+              color: #ffffff96;
+              
+            
+            }
+
+            .footer-brand span {
+
+              font-weight: 600;
               
             
             }
@@ -3683,9 +3648,9 @@ display: none}
 
                         .form-group {
                           display: flex;
-                          flex-direction: column;
-                          gap: clamp(12px, 3vw, 16px);
-                          margin-bottom: clamp(1rem, 3vw, 1.5rem);
+                          flex-direction: row;
+                          gap: 8px;
+
                           position: relative;
                           margin-top: 10px;
                         }
@@ -3714,14 +3679,11 @@ display: none}
 
                         .email-input::placeholder {
                           color: rgba(255, 255, 255, 0.4);
-                          font-weight: 400;
+                          font-weight: 200;
+
                         }
 
-                        .email-input:focus {
-                          border-color: rgba(6, 182, 212, 0.5);
-                          background: rgba(255, 255, 255, 0.08);
-                          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
-                        }
+                     
 
                         .email-input.error {
                           border-color: rgba(239, 68, 68, 0.5);
@@ -3744,9 +3706,9 @@ display: none}
                                 }
 
                                 .submitbtn:hover {
-                        transform: translateY(-3px) scale(1.02);
+
                         box-shadow: 0 20px 40px rgba(168, 85, 247, 0.4);
-                        background: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+
                         transition: all 0.3s ease;
                       }
 
@@ -3768,23 +3730,23 @@ display: none}
 
                       /*app showcase area*/
                       .phone-container {
-                        width: 170px;
-                        height: 330px;
+                        width: 150px;
+                        height: 300px;
                         margin-left: 0px;
                         margin-right: 0px;
-                        margin-bottom: 10px;
+                        margin-bottom: px;
                         
                       }
 
                       .showcase-title {
                         font-family : 'Sora';
-                        font-size: 35px;
+                        font-size: 28px;
                         font-weight: 300;
                         background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);
                         background-clip: text;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
-                        margin-bottom: 1.5rem;
+                        margin-bottom: 0.8rem;
                         line-height: 1.1;
                       }
 
@@ -3870,7 +3832,7 @@ display: none}
                         backdrop-filter: blur(10px);
                         border: 1px solid rgba(255, 255, 255, 0.2);
                         border-radius: 12px;
-                        padding: clamp(12px, 2vw, 16px);
+                        padding: 8px;
                         animation: float 6s ease-in-out infinite;
                         font-size: 0.6rem;
                         white-space: nowrap;
@@ -3878,7 +3840,7 @@ display: none}
                       }
 
                       .floating-card-1 {
-                        top: 0%;
+                        top: 4%;
                         right: -100px;
                         animation-delay: 0s;
                       }
@@ -4043,7 +4005,7 @@ display: none}
 
                           .founder-title-text {
                             font-size: 0.8rem;
-                            color: #06b6d4;
+                            color: #bb89e9ff;
                             font-weight: 500;
                             text-transform: uppercase;
                             letter-spacing: 0.05em;
@@ -4223,7 +4185,7 @@ display: none}
                                           -webkit-background-clip: text;
                                           -webkit-text-fill-color: transparent;
                                           margin-bottom: 0.8rem;
-                                          padding-top: 100px;
+                                          padding-top: 250px;
                                           line-height: 1.1;
                                           margin:  auto;
                                           display: block;
@@ -4685,9 +4647,6 @@ display: none}
   
 
   <div className='feature-item-list'>
-
-    
-    <p className='demand'>The Demand for nowNoise</p>
                   <div class="newsletter-stats">
                  
                       <div class="stat-item">
@@ -4721,7 +4680,7 @@ display: none}
 <div className='feature-list'>
   <div className="feature-item">
     <div className='statslist'>
-      <p className='demand'>The Demand for nowNoise</p>
+    
                   <div class="newsletter-stats">
                  
                       <div class="stat-item">
