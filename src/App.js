@@ -379,7 +379,7 @@ const options = {
 
             @media (max-width: 1000px) {
               .showcase-description-compact{
-              display: block}
+              display: none}
             }
 
                
@@ -3746,7 +3746,7 @@ display: none}
                         background-clip: text;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
-                        margin-bottom: 0.8rem;
+                        margin-bottom: 1rem;
                         line-height: 1.1;
                       }
 
@@ -4349,7 +4349,8 @@ display: none}
                   </div>
                   <div className="feature-text">
                     <h3>Real-Time Sharing</h3>
-                    <p>Share the song you're vibing to right now, unfiltered</p>
+                    <p>We'll randomly ask what you're listening to— post it. Skip the highlight reel, share your actual soundtrack. </p>
+                  
                   </div>
                 </div>
                 <div className="feature-item">
@@ -4359,8 +4360,7 @@ display: none}
                   <div className="feature-text">
                     <h3>Discover Hidden Gems</h3>
                     <p>
-                      Explore rising artists, trending tracks, and most importantly, the
-                      tracks your friends love.
+                      Explore rising artists, trending tracks, and most importantly, the tracks your friends love.
                     </p>
                   </div>
                 </div>
@@ -4370,7 +4370,7 @@ display: none}
                   </div>
                   <div className="feature-text">
                     <h3>Connect Through Music</h3>
-                    <p>Build authentic connections with like minded-listeners</p>
+                    <p>Build friendships that go beyond surface level - connect through your actual musical tastes and find your musical community.</p>
                   </div>
                 </div>
               </div>
