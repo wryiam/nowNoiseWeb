@@ -53,9 +53,9 @@ const data = {
   datasets: [
     {
       data: isSmallScreen ? mobileData : fullData,
-      backgroundColor: '#a955f7',
-      borderColor: '#9333ea',
-      borderWidth: 1,
+      backgroundColor: '#c491f0cb',
+      borderColor: '#fcf8ffcc',
+      borderWidth: 2,
       borderRadius: isSmallScreen ? 3 : 5,
       barThickness: isSmallScreen ? 12 : 18, 
     },
@@ -211,12 +211,22 @@ const options = {
   return (
     <div className="showcase-container">
       <style>{`
+
+
+          .founder-bio-compact {
+          display:none;
+          
+          }
+
+
+
         * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
         }
 
+  
         .short {
         display: none;}
 
@@ -230,6 +240,7 @@ const options = {
       .full {
         display: none;
       }
+
       
       }
 
@@ -288,10 +299,10 @@ const options = {
 
         .showcase-container {
           position: relative;
-          background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-                      radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.1) 0%, transparent 50%),
-                      linear-gradient(180deg, #010111ff 0%, #06061dff 100%);
+          background: radial-gradient(circle at 20% 80%, rgba(19, 19, 32, 0.3) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(43, 19, 33, 0.15) 0%, transparent 50%),
+                      radial-gradient(circle at 40% 40%, rgba(25, 46, 48, 0.1) 0%, transparent 50%),
+                      linear-gradient(180deg, #010111ff 0%, #050516ff 100%);
           min-height: 100vh;
         }
 
@@ -406,6 +417,8 @@ const options = {
   transition: all 0.3s ease;
 }
 
+
+
         .scrollbtn{
             background: linear-gradient(135deg,rgba(64, 6, 212, 0.46) 0%,rgba(169, 85, 247, 0.63) 100%);
             border: none;
@@ -476,7 +489,7 @@ const options = {
 /* Main Grid Layout */
 .founders-main-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: clamp(80px, 12vw, 120px);
 
   max-width: 100%;
@@ -542,7 +555,7 @@ const options = {
 }
 
 .newsletter-section {
-  padding: clamp(60px, 12vh, 120px) clamp(20px, 5vw, 40px);
+
   position: relative;
   z-index: 5;
   min-height: 100vh;
@@ -558,13 +571,13 @@ const options = {
 }
 
 .newsletter-container {
-  width: 100%;
+
   margin: 0 auto;
   text-align: center;
 }
 
 .newsletter-card {
-  width: 70%;
+  width: 800px;
 
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(107, 126, 219, 0.64);
@@ -608,77 +621,139 @@ const options = {
 
 }
 
+.statslist {
+display: flex;
+flex-direction: column;
+margin: 0 auto;}
+
+/* Base styles for feature-item-list */
+.feature-item-list {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  padding: clamp(0.6rem, 2vw, 0.8rem); /* Responsive padding */
+  background: rgba(252, 0, 168, 0.03);
+  border: 1px solid rgba(151, 100, 202, 0.26);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Demand title */
+.demand {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(14px, 3vw, 15px); /* Responsive font size */
+  margin-bottom: clamp(8px, 2vw, 10px);
+  margin-top: 2px;
+  color: #df9de6d1;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* Newsletter stats container */
 .newsletter-stats {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem; /* Responsive gap */
   flex-wrap: wrap;
   text-align: center;
   margin: 0 auto;
-
+  width: 100%;
 }
 
-.feature-item-list {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-          margin-top: 15px;
-
-          padding: 0.8rem;
-          background: rgba(252, 0, 168, 0.03);
-          border: 1px solid rgba(151, 100, 202, 0.26);
-          border-radius: 16px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          align-items: center;
-        }
-
-
-        .demand {
-          font-family: 'Sora';
-          font-size: 15px;
-          margin-bottom: 10px;
-          margin-top: 2px;
-          color: #df9de6d1;
-          font-weight: 300;
-
-        }
-
+/* Individual stat items */
 .stat-item {
   text-align: center;
   min-width: 0;
   flex-shrink: 0;
+  flex: 0 1 auto; /* Allow flexible sizing */
 }
 
+/* Stat numbers */
 .stat-number {
-  font-size: 25px;
+  font-size: clamp(20px, 5vw, 25px); /* Responsive font size */
   font-weight: 600;
   background: linear-gradient(135deg, rgb(220, 52, 209) 0%, rgb(192, 137, 244) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.rem;
+  margin-bottom: 0.2rem;
   display: block;
+  line-height: 1.2;
 }
 
+/* Stat labels */
 .stat-label {
-  font-size: 10px;
+  font-size: clamp(9px, 2.5vw, 10px); /* Responsive font size */
   color: rgba(255, 255, 255, 0.79);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap; /* Prevent label wrapping */
 }
 
+/* Dividers */
 .stat-divider {
   width: 2px;
-  height: clamp(30px, 6vw, 49px);
+  height: clamp(25px, 5vw, 49px); /* Responsive height */
   background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
   flex-shrink: 0;
 }
+
+/* Privacy text */
+.privacy-text-survey {
+  font-size: clamp(10px, 2.5vw, 12px);
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: clamp(8px, 2vw, 12px);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .newsletter-stats {
+    gap: clamp(0.8rem, 6vw, 2rem);
+  }
+  
+  .feature-item-list {
+    width: min(350px, 95vw);
+    padding: 0.6rem;
+  }
+  
+  .stat-divider {
+    height: 30px; /* Fixed height for mobile */
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .newsletter-stats {
+    gap: 1rem;
+  }
+  
+  .feature-item-list {
+    width: 95vw;
+    padding: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 18px;
+  }
+  
+  .stat-label {
+    font-size: 8px;
+  }
+  
+  .stat-divider {
+    height: 25px;
+  }
+}
+
 
 .form-container {
   position: relative;
@@ -1011,6 +1086,7 @@ const options = {
   position: relative;
   z-index: 10;
   font-weight: 200;
+ font-size: 1rem;
 }
 
 
@@ -1220,7 +1296,7 @@ const options = {
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-bottom: 1.5rem;
+          margin-bottom: 2.5rem;
           line-height: 1.1;
         }
 
@@ -1261,16 +1337,16 @@ const options = {
         .feature-item-graph {
           display: flex;
           align-items: flex-start;
-          gap: 1rem;
+          flex-direction: column;
+          gap: 2rem;
           padding: 1.5rem;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 16px;
+
           transition: all 0.3s ease;
           cursor: pointer;
           position: relative;
           overflow: hidden;
           align-items: center;
+          width: 90%;
         }
 
         
@@ -1394,7 +1470,7 @@ const options = {
   opacity: 0;
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateY(50px);
-  margin-left: 5%;
+  margin-left: 7%;
   margin-right:7%;
 
   
@@ -1409,13 +1485,12 @@ const options = {
 
 .mission-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 0px;
   align-items: center;
 
   margin: 0 auto;
-  margin-left: 4%;
-          margin-right: 4%;
+
 }
 
 /* Replace the existing .algorithm-visualization styles with this: */
@@ -1441,6 +1516,7 @@ const options = {
   height: 320px;
   
 }
+  
   
 .photo-item:nth-child(1) {
   position: relative;
@@ -1867,12 +1943,12 @@ display: inline;}
 .how-it-works-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 3rem;
+
   align-items: center;
   max-width: 100%;
   margin: 0 auto;
-  margin-left: 4%;
-  margin-right: 6%;
+  margin-left: 6%;
+  margin-right: 8%;
 }
 
 .how-it-works-content {
@@ -1882,7 +1958,7 @@ display: inline;}
 .how-it-works-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 300;
-  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+  background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2172,8 +2248,8 @@ margin-right: 13px;}}
 .algorithm-comparison {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  width: 100%;
+
+
 
  
 
@@ -2290,9 +2366,6 @@ margin-right: 13px;}}
     font-size: 0.85rem;
   }
 
-  .algorithm-comparison {
-    margin-top: 1rem;
-  }
 
   .step-item {
     flex-direction: column;
@@ -2326,8 +2399,8 @@ margin-right: 13px;}}
   }
 
   .step-item {
-    padding: 1.5rem;
-    margin: 0 10px;
+    padding: 1rem;
+
   }
 
   .step-number {
@@ -2337,7 +2410,13 @@ margin-right: 13px;}}
   }
 
   .step-content h3 {
-    font-size: 0.9rem;
+            font-size: 0.9rem;
+        font-weight: 400;
+        margin-bottom: 0.1rem;
+        background: linear-gradient(135deg, rgb(210, 109, 207) 0%, rgb(201, 129, 212) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
   }
 
   .step-content p {
@@ -2617,7 +2696,7 @@ margin-right: 13px;}}
 
 
     max-width: 800px;
-    margin: 0 auto 25px;
+    margin: 0 auto 10px;
     font-family: 'Sora';
     text-align: left;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -2674,15 +2753,6 @@ margin-right: 13px;}}
 
   }
 
-.photo-showcase {
-            display: flex;
-
-            width: 100%;
-            padding: 1rem;
-
-            order: 2;
-            
-        }
 
         .flexy p{
           margin: 0 auto;
@@ -3047,6 +3117,10 @@ display: none}
     margin-left: 10px;
   }
 
+  .how-it-works-title {
+      font-size: 35px;
+      }
+
 
 
 
@@ -3279,7 +3353,7 @@ display: none}
 
           .showcase-grid {
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 0rem;
             text-align: center;
             padding-left: 0px;
           }
@@ -3346,7 +3420,7 @@ display: none}
         .feature-item-list {
           display: flex;
           flex-direction: column;
-          width: 100%;
+          width: 80%;
           align-items: center;
           justify-content: center;
 
@@ -3390,11 +3464,17 @@ display: none}
           }
 
         .stat-label {
-          font-size: 8px;
-          color: rgba(255, 255, 255, 0.79);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.79);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  max-width: 100px;
+  
+  white-space: normal;       /* allow wrapping */
+  word-wrap: break-word;     /* break long words if needed */
+  overflow-wrap: break-word; /* modern alternative */
+  text-align: left;
+}
 
 
         .flexy p{
@@ -3479,15 +3559,18 @@ display: none}
                           display: flex;
                           justify-content: center;
                           align-items: center;
-                          gap: 1rem;
+                          /* Dynamic gap that scales with container width */
+                          gap: clamp(1rem, 3vw, 4rem);
                           flex-wrap: wrap;
                           margin-bottom: 0px;
-                        }
+                      }
 
                         .stat-item {
                           text-align: center;
                           min-width: 0;
                           flex-shrink: 0;
+                          display: flex;
+                          gap: 0.4rem;
                
                         }
 
@@ -3688,10 +3771,10 @@ display: none}
 
                         gap: 0.3rem;
                         padding: 1rem;
-                        margin-left: 10px;
-                        margin-right: 10px;
-                        width: 95vw;
-                        max-width: 95vw;
+
+                        width: 75vw;
+                        max-width: 85vw;
+                        margin: 0 auto;
 
                       }
 
@@ -3900,6 +3983,20 @@ display: none}
                             position: relative;
                             z-index: 10;
                             text-align: left;
+                            display: none;
+                          }
+
+                          .founder-bio-compact {
+                            color: rgba(255, 255, 255, 0.85);
+                            line-height: 1.7;
+                            margin-top: 1rem;
+                            font-size: clamp(0.95rem, 2vw, 1.05rem);
+                            position: relative;
+                            z-index: 10;
+                            text-align: left;
+                            font-weight: 200;
+                            display: block;
+                          
                           }
 
 
@@ -4340,87 +4437,85 @@ display: none}
         </div>
       </section>
 
-
-
-
-
-
-      <section className="mission-section" ref={addSectionRef}>
+      <section className="showcase-section" ref={addSectionRef}>
         <div className="section-container">
-          <div className="mission-grid">
-
-
-            <div className="mission-content">
-                <h2 className="mission-title">Our Mission Against Algorithms</h2>
-              <p className="mission-description">
-                </p>
+          <div className="showcase-grid">
+            <div className="showcase-content">
+              <h2 className="showcase-title">Our Mission Against Algorithms</h2>
 
               <div className="feature-list">
                 <div className="feature-item">
                   <div className="point-icon">
-                  <Sparkles size={20} />
+                    <Music size={20} />
                   </div>
                   <div className="feature-text">
                     <h3>The Changing Nature of Songs</h3>
                     <p className='full'>In recent years, songs have become shorter, faster, and more disposable. Artists are pushed to deliver instant hooks tailored to algorithms and 15-second TikTok clips.</p>
                     <p className='short'>Songs have become shorter, faster, and more disposable—tailored to algorithms and 15-second clips rather than artistry.</p>
-  </div>
+                  </div>
+                </div>
+                <div className="feature-item">
+                  <div className="point-icon">
+                    <Heart size={20} />
+                  </div>
+                  <div className="feature-text">
+                    <h3>Discover Hidden Gems</h3>
+                    <p>Tracks are designed to go viral, not to last — made to feed the stream rather than spark a real connection.
+    </p>
+                  </div>
                 </div>
                 <div className="feature-item">
                   <div className="point-icon">
                     <Users size={20} />
                   </div>
                   <div className="feature-text">
-                    <h3>Viral over Valuable</h3>
-                    <p>Tracks are designed to go viral, not to last — made to feed the stream rather than spark a real connection.
-    </p>
-  </div>
-                </div>
-                <div className="feature-item">
-                  <div className="point-icon">
-                    <Zap size={20} />
-                  </div>
-                  <div className="feature-text">
-                    <h3>Our Belief at nowNoise</h3>
+                    <h3>Connect Through Music</h3>
                     <p className='full'>We believe music deserves more. Discovery shouldn’t be about chasing trends or tricking algorithms — it should be about people, stories, and the timeless feeling of finding a song that truly moves you.
-    </p>
-    <p className='short'>Music deserves more than chasing trends or tricking algorithms—it's about finding songs that truly move you.</p>
-  </div>
-                </div>
-              </div>
+                    </p>
+                    <p className='short'>Music deserves more than chasing trends or tricking algorithms—it's about finding songs that truly move you.</p>
 
+                  </div>
+                </div>
+                
+              </div>
             </div>
+
             <div class="photo-showcase">
 
-    
+
+   
 
 
 
-              
+
+
+
+             
+
 
               <div className="algorithm-comparison">
 
-                <div style={{
-  padding: '0px',
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-}}>
-  <div className='feature-list'>
+
+
+
+
+
 
 
 
     <div className='feature-item-graph'>
 
+
     <div className="chart-section">
-      <div className="chart-wrapper" style={{ width: '100%' }}>
+      <div className="chart-wrapper" style={{  }}>
         <Bar data={data} options={options} />
       </div>
+      <p className='btm-txt'>Avg. length of songs (s)</p>
     </div>
-    <p >Avg. length of songs (s)</p>
+    
 
-                                                                      
+
+                                                                     
   <style jsx>{`
     .chart-container {
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -4442,11 +4537,23 @@ display: none}
     }
      
     .chart-section {
-      width: 100%;
-    }
+      width: 500px;
+      
     
+    }
+
+    .btm-txt {  
+      font-size: 15px;
+      text-align: center;
+      color: rgba(228, 159, 255, 0.8);
+      margin-top: 5px;
+    
+    }
+   
     .chart-wrapper {
       height: 300px;
+      
+     
     }
      
     @media (max-width: 999px) {
@@ -4454,6 +4561,15 @@ display: none}
         padding: 0px;
         margin: 0 10px;
         max-width: 300px;
+      }
+
+      .btm-txt {
+      font-size: 12px;
+      
+      }
+
+      .chart-section {
+        width: 75vw;
       }
                            
       .chart-wrapper {
@@ -4465,38 +4581,46 @@ display: none}
         margin-top: 8px;
       }
     }
-    
+   
+    @media (max-width: 1000px) {
+      .feature-item-list {
+        display: none;
+      }
     @media (max-width: 600px) {
       .chart-container {
         padding: 12px;
         border-radius: 12px;
       }
+
+    
     }
   `}</style>
-</div>
-  </div>
-  </div>
-  
+
   
 
+  <div className='feature-item-list'>
 
-                    
-                    <div className='feature-item-list'><p className='demand'>The Demand for nowNoise</p>
+    
+    <p className='demand'>The Demand for nowNoise</p>
                   <div class="newsletter-stats">
-                  
+                 
                       <div class="stat-item">
                         <span class="stat-number">94%</span>
                         <span class="stat-label">Approval</span>
                       </div>
 
+
                       <div class="stat-divider"></div>
+
 
                       <div class="stat-item">
                         <span class="stat-number">20+</span>
                         <span class="stat-label">Beta testers</span>
                       </div>
 
+
                       <div class="stat-divider"></div>
+
 
                       <div class="stat-item">
                         <span class="stat-number">∞</span>
@@ -4504,23 +4628,83 @@ display: none}
                       </div>
                     </div>
                     <p className='privacy-text-survey'>Based on a survey with 100+ applicants.</p>
-                    
+                   
                     </div>
 
-                
-                
-                  
+</div>
+<div className='feature-list'>
+  <div className="feature-item">
+    <div className='statslist'>
+      <p className='demand'>The Demand for nowNoise</p>
+                  <div class="newsletter-stats">
+                 
+                      <div class="stat-item">
+                        <span class="stat-number">-24%</span>
+                        <span class="stat-label">Song Length since 1990</span>
+                      </div>
 
-              
+
+                      <div class="stat-divider"></div>
+
+
+                      <div class="stat-item">
+                        <span class="stat-number">1%</span>
+                        <span class="stat-label"> of artists = 90% all streams</span>
+                      </div>
+
+
+                    </div>
+                   
+    </div>
+                  
+                    </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+ 
+ 
+
+
+
+
+                   
+                    
+
+               
+               
+                 
+
+
+             
+
 
               </div>
-            
-                
+           
+               
                 </div>
-                
-          </div>
+    
+
+
+            
+
+
+        
         </div>
       </section>
+      
+
+
+
+
+
+
+ 
       
 
 
@@ -4529,7 +4713,58 @@ display: none}
   <div className="section-container">
     <div className="founders-main-grid">
       
-      {/* Left Column - Title and Story */}
+     
+
+      {/* Right Column - Founder Cards */}
+    
+      <div className="founders-right-column">
+
+        <h2 className="mission-title3">The Founders</h2>
+        <div className="founder-card">
+          <div className='single-founder'>
+            <div className="founder-header">
+            <div className="founder-image-container">
+              <img src={will} alt="Will - Co-founder" className="founder-image" />
+            
+            </div>
+            <div className='founder-info'>
+              <h3 className="founder-name">William Encarnacion</h3>
+              <p className="founder-title-text">Co-founder & Developer</p>
+            </div>
+            
+            </div>
+            
+            
+            <p className="founder-bio">
+         An avid guitar player, vinyl collector, and coder, William is passionate about keeping the soul of music alive in a digital world. At nowNoise, he works to ensure that new technology enhances how we discover and share songs - without letting algorithms strip away the human connection.</p>
+         <p className='founder-bio-compact'>A guitarist, vinyl collector, and coder, William ensures technology at nowNoise enhances music discovery without losing the human touch.</p>
+          </div>
+          
+
+        
+          
+          <div className="stylized-line"></div>
+          <div className='single-founder'><div className="founder-header">
+            <div className="founder-image-container">
+              <img src={charles} alt="Charlie - Co-founder" className="founder-image" />
+            </div>
+            <div className="founder-info">
+              <h3 className="founder-name">Charlie Ponambalum</h3>
+              <p className="founder-title-text">Co-founder & Designer</p>
+            </div>
+          </div>
+          <p className="founder-bio">
+          As a classically trained musician and tech enthusiast, Charlie bridges artistry and innovation. His background in music production drives nowNoise’s mission to ensure technology amplifies creativity rather than replacing it.
+          </p>
+          <p className='founder-bio-compact'>A classically trained musician and tech enthusiast, Charlie drives nowNoise's mission to make technology enhance artistry, not replace it.</p>
+          </div>
+
+          
+         
+        </div>
+      </div>
+
+       {/* Left Column - Title and Story */}
       <div className="founders-left-column">
           <h2 className="mission-title2">Our Backstory</h2>
 
@@ -4564,74 +4799,54 @@ display: none}
   We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms. 
 </p>
 <p class="story-text">
-  So we built a space that feels human again—no endless playlists, no filters, no noise. Just people sharing tracks they love and connecting through music that matters.</p>
+  So we built a space that feels human again - no endless playlists, no filters, no noise. Just people sharing tracks they love and connecting through music that matters.</p>
 
     </div>
 </div>
 
       </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+      
+      <section id="newsletter" className="founders-section" ref={addSectionRef}>
+  <div className="section-container">
+    <div className="founders-main-grid">
+      
+     
 
       {/* Right Column - Founder Cards */}
     
       <div className="founders-right-column">
 
-        <h2 className="mission-title3">The Founders</h2>
         <div className="founder-card">
-          <div className='single-founder'>
-            <div className="founder-header">
-            <div className="founder-image-container">
-              <img src={will} alt="Will - Co-founder" className="founder-image" />
-            
-            </div>
-            <div className='founder-info'>
-              <h3 className="founder-name">William Encarnacion</h3>
-              <p className="founder-title-text">Co-founder & Developer</p>
-            </div>
-            
-            </div>
-            
-            
-            <p className="founder-bio">
-         An avid guitar player, vinyl collector, and coder, William is passionate about keeping the soul of music alive in a digital world. At nowNoise, he works to ensure that new technology enhances how we discover and share songs - without letting algorithms strip away the human connection.</p>
-          </div>
-          
-
-        
-          
-          <div className="stylized-line"></div>
-          <div className='single-founder'><div className="founder-header">
-            <div className="founder-image-container">
-              <img src={charles} alt="Charlie - Co-founder" className="founder-image" />
-            </div>
-            <div className="founder-info">
-              <h3 className="founder-name">Charlie Ponambalum</h3>
-              <p className="founder-title-text">Co-founder & Designer</p>
-            </div>
-          </div>
-          <p className="founder-bio">
-          As a classically trained musician and tech enthusiast, Charlie bridges artistry and innovation. His background in music production drives nowNoise’s mission to ensure technology amplifies creativity rather than replacing it.
-          </p></div>
-
-          
-         
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
-      
-<section id="newsletter" className="newsletter-section" ref={addSectionRef}>
-
-  <div className="newsletter-card">
-    <div className="newsletter-container">
-      
-      <h2 className="newsletter-title">Don't Miss the Drop</h2>
+          <h2 className="newsletter-title">Don't Miss the Drop</h2>
       <p className="newsletter-description">
         Join our early community and be the first to explore what’s next in sound.
       </p>
 
+      <div className="newsletter-stats">
+        <div className="stat-item">
+          <span className="stat-number">94%</span>
+          <span className="stat-label">Approval</span>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <span className="stat-number">20+</span>
+          <span className="stat-label">Beta Testers</span>
+        </div>
+        <div className="stat-divider"></div>
+        <div className="stat-item">
+          <span className="stat-number">∞</span>
+          <span className="stat-label">Discoveries</span>
+        </div>
+      </div>
 
+      <p className="stat-text">Based on a survey of 100+ participants</p>
 
       <form
         action="https://formspree.io/f/xdkdvbpp"
@@ -4649,16 +4864,31 @@ display: none}
             />
           </label>
           <button type="submit" className="submitbtn">
-            Sign up
+            Join Now
           </button>
         </div>
       </form>
 
       <p className="privacy-text">No spam. Just pure updates. Opt out anytime.</p>
+         
+          
+
+        
+ 
+          
+         
+        </div>
+      </div>
+
+  
+      
     </div>
   </div>
 </section>
 
+
+ 
+      
 
 
 <footer class="w-full text-gray-300 text-center py-6">
