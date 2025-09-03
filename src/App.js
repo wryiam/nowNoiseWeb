@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronDown, Play, Users, Heart, Sparkles, Music, Zap, Globe, Mail, Check, AlertCircle } from 'lucide-react';
+import { ChevronDown,  Users, Heart,  Music, Zap, Globe } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,7 +20,6 @@ import ss3 from './assets/images/ss3.png';
 import cases from './assets/images/cases.jpeg';
 import char from './assets/images/charplay.jpeg';
 import discs from './assets/images/discs.jpeg';
-import data from './assets/images/DATA.png';
 import pg from './assets/images/photogroup.png'
 
 
@@ -121,46 +120,13 @@ const options = {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const screenshots = [ss1, ss2, ss3];
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle, loading, success, error
-  const [errorMessage, setErrorMessage] = useState('');
+
 
   const validateEmail = (email) => {
     return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!email.trim()) {
-      setStatus('error');
-      setErrorMessage('Please enter your email address');
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setStatus('error');
-      setErrorMessage('Please enter a valid email address');
-      return;
-    }
-
-    setStatus('loading');
-    setErrorMessage('');
-
-    // Simulate API call
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setStatus('success');
-      setEmail('');
-      
-      // Reset to idle after 4 seconds
-      setTimeout(() => {
-        setStatus('idle');
-      }, 4000);
-    } catch (error) {
-      setStatus('error');
-      setErrorMessage('Something went wrong. Please try again.');
-    }
-  };
+  
 
   useEffect(() => {
     const handleMouseMove = (e) => {
