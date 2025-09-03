@@ -119,12 +119,8 @@ const options = {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const screenshots = [ss1, ss2, ss3];
-  const [email, setEmail] = useState('');
 
 
-  const validateEmail = (email) => {
-    return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-  };
 
   
 
@@ -4392,7 +4388,7 @@ display: none}
             
             <div className='flexy'>
               <div className='photo-container-compact'>
-                <img src={pg}></img>
+                <img src={pg} alt='photocontainer'></img>
               </div>
               <div class="photo-container">
                     <img src={cases} 
