@@ -597,10 +597,8 @@ display: block;
 }
 
 .newsletter-main-grid {
-  display: grid;
-  grid-template-columns: 1fr ;
-  gap: clamp(80px, 12vw, 120px);
-  min-height: 60vh;
+ 
+  min-height: 45vh;
   align-items:center;
   max-width: 50%;
   margin: 0 auto;
@@ -1242,7 +1240,7 @@ margin: 0 auto;}
 
   .founders-right-column {
     order: 2;
-    gap: 3rem;
+    gap: 1rem;
   }
 
   .founders-story {
@@ -1258,7 +1256,7 @@ margin: 0 auto;}
   }
 
   .founders-main-grid {
-    gap: 14rem;
+    gap: 10rem;
   }
 
   .founder-card {
@@ -3608,10 +3606,7 @@ display: none}
         }
 
 
-        .flexy {
-        margin-top: 100px;
-
-        }
+       
 
         
 
@@ -4261,7 +4256,7 @@ display: none}
 
                   .mission-title3 {
                                           font-family : 'Sora';
-                                          font-size: 35px;
+                                          font-size: 28px;
                                           font-weight: 300;
                                           background: linear-gradient(135deg, #dbbadaff 0%, #a855f7 100%);
                                           background-clip: text;
