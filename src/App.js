@@ -4,11 +4,13 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Line } from 'react-chartjs-2';
 import { Bar } from 'react-chartjs-2';
 import logo from "./assets/images/nnlogo.png";
 import './assets/fonts/fonts.css';
@@ -17,6 +19,7 @@ import will from './assets/images/will.jpg';
 import ss1 from './assets/images/ss1.png';
 import ss2 from './assets/images/ss2.png';
 import ss3 from './assets/images/ss3.png';
+import ss4 from './assets/images/ss4.png';
 import cases from './assets/images/cases.jpeg';
 import char from './assets/images/charplay.jpeg';
 import discs from './assets/images/discs.jpeg';
@@ -33,7 +36,8 @@ const ModernAnimatedSite = () => {
   ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend
@@ -52,16 +56,21 @@ const data = {
   datasets: [
     {
       data: isSmallScreen ? mobileData : fullData,
-      backgroundColor: '#c491f0cb',
-      borderColor: '#fcf8ffcc',
-      borderWidth: 2,
-      borderRadius: isSmallScreen ? 3 : 5,
-      barThickness: isSmallScreen ? 12 : 18, 
+      backgroundColor: 'rgba(196, 145, 240, 0.1)',
+      borderColor: '#c491f0',
+      borderWidth: isSmallScreen ? 2 : 3,
+      pointBackgroundColor: '#c491f0',
+      pointBorderColor: '#fcf8ffcc',
+      pointBorderWidth: 2,
+      pointRadius: isSmallScreen ? 4 : 6,
+      pointHoverRadius: isSmallScreen ? 6 : 8,
+      fill: true,
+      tension: 0, // Straight lines
     },
   ],
 };
+
 const options = {
-  indexAxis: 'y',
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -88,19 +97,6 @@ const options = {
   },
   scales: {
     x: {
-      min: 150,
-      max: 260,
-    
-      ticks: {
-        color: 'rgba(255,255,255,0.6)',
-        font: {
-          family: 'Sora',
-          size: isSmallScreen ? 10 : 12,
-        },
-        maxTicksLimit: isSmallScreen ? 4 : 6, // Fewer ticks on mobile
-      },
-    },
-    y: {
       grid: {
         color: 'rgba(255,255,255,0.1)',
         drawBorder: false,
@@ -113,12 +109,29 @@ const options = {
         },
       },
     },
+    y: {
+      min: 180,
+      max: 270,
+      grid: {
+        color: 'rgba(255,255,255,0.1)',
+        drawBorder: false,
+      },
+      ticks: {
+        color: 'rgba(255,255,255,0.6)',
+        font: {
+          family: 'Sora',
+          size: isSmallScreen ? 10 : 12,
+        },
+        maxTicksLimit: isSmallScreen ? 4 : 6, // Fewer ticks on mobile
+        padding: 10,
+      },
+    },
   },
 };
   const sectionsRef = useRef([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const screenshots = [ss1, ss2, ss3];
+  const screenshots = [ss1, ss2, ss3, ss4];
 
 
 
@@ -550,12 +563,33 @@ const options = {
 /* Main Grid Layout */
 .founders-main-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(80px, 12vw, 120px);
+  grid-template-columns: 1fr 1.4fr;
+  gap: 50px;
 
   max-width: 100%;
   margin: 0 auto;
 }
+
+.newsletter-main-grid {
+  display: grid;
+  grid-template-columns: 1fr ;
+  gap: clamp(80px, 12vw, 120px);
+
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1000px){
+
+.newsletter-main-grid {
+max-width: 100%;
+
+}
+
+
+}
+
+
 
 /* Left Column - Text Content */
 .founders-left-column {
@@ -564,7 +598,7 @@ const options = {
   flex-direction: column;
   gap: 3rem;
   justify-self: start; /* Add this - aligns the grid item to the start */
-  align-self: start; 
+  align-self: end; 
 }
 
 @media (min-width: 1000px) {
@@ -665,6 +699,7 @@ const options = {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   white-space: nowrap;
+  text-align: center;
 
   line-height: 1.1;
   padding-top: 10px;
@@ -1042,7 +1077,7 @@ margin: 0 auto;}
 .founders-right-column {
   display: flex;
   flex-direction: column;
-  gap: clamp(0px, 6vw, 50px);
+
   overflow: hidden;
 
 }
@@ -1259,8 +1294,8 @@ margin: 0 auto;}
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-left: 8%;
-          margin-right: 8%;
+          margin-left: 10%;
+          margin-right: 6%;
         }
 
         .showcase-section.animate-in {
@@ -1279,7 +1314,7 @@ margin: 0 auto;}
           display: grid;
           grid-template-columns: 1.5fr 1fr;
           gap: clamp(40px, 8vw, 80px);
-          align-items: center;
+          align-items: end;
           min-height: 600px;
           font-family: 'Sora';
           padding-left: 20px;
@@ -1336,6 +1371,7 @@ margin: 0 auto;}
           overflow: hidden;
           align-items: center;
         }
+          
         .feature-item-graph {
           display: flex;
           align-items: flex-start;
@@ -1391,6 +1427,46 @@ margin: 0 auto;}
           font-weight: 400;
         }
 
+        .founder-feature-text {
+          color: rgba(255, 255, 255);
+          font-size: 1rem;
+          line-height: 1.5;
+          font-weight: 100;
+          text-align: left;
+          flex-direction: column;
+
+          font-family: 'Sora';
+          display: flex;
+          gap: 1rem;
+        
+        }
+
+        .founder-feature-text-compact {
+          color: rgba(255, 255, 255);
+          font-size: 1rem;
+          line-height: 1.5;
+          font-weight: 100;
+          text-align: left;
+          flex-direction: column;
+
+          font-family: 'Sora';
+          display: flex;
+          gap: 1rem;
+          display: none;
+        
+        }
+
+        @media (max-width:1000px) {
+          .founder-feature-text {
+            display:none;
+          }
+          .founder-feature-text-compact {
+            display: block;
+          }
+        }
+
+       
+
         /* Enhanced Phone Showcase */
         .phone-showcase {
           position: relative;
@@ -1420,8 +1496,8 @@ margin: 0 auto;}
           width: 100%;
           height: 100%;
           background: linear-gradient(145deg, #1a1a1a 0%, #0d1117 100%);
-          border-radius: clamp(30px, 5vw, 40px);
-          padding: clamp(6px, 1vw, 8px);
+          border-radius: 50px;
+          padding: clamp(6px, 1vw, 10px);
           box-shadow: 
             0 0 0 2px #2d3748,
             0 30px 60px rgba(0, 0, 0, 0.8),
@@ -1429,6 +1505,16 @@ margin: 0 auto;}
           position: relative;
           overflow: hidden;
         }
+
+        @media (max-width: 1000px) {
+        .phone-frame {
+        border-radius: 30px;
+        
+        }
+        
+        }
+
+        
 
         .phone-screen {
           width: 100%;
@@ -2500,6 +2586,7 @@ margin-right: 13px;}}
   margin-bottom: 1.5rem;
   line-height: 1.3;
 }
+
 
 .mission-description {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -4008,6 +4095,7 @@ display: none}
                         -webkit-text-fill-color: transparent;
                         margin-bottom: 0.8rem;
                         line-height: 1.1;
+                        display: none;
                       }
 
                       .story-section {
@@ -4516,127 +4604,90 @@ display: none}
     <div className='feature-item-graph'>
 
 
-    <div className="chart-section">
-      <div className="chart-wrapper" style={{  }}>
-        <Bar data={data} options={options} />
-      </div>
-      <p className='btm-txt'>Avg. length of songs (s)</p>
-    </div>
+    <div className="chart-section">       
+      <div className="chart-wrapper" style={{  }}>         
+        <Line data={data} options={options} />       
+      </div>       
+      <p className='btm-txt'>Avg. length of songs (s)</p>     
+    </div>                                                                                
     
 
 
-                                                                     
-  <style jsx>{`
-    .chart-container {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 32px;
-      font-family: 'Sora';
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-     
-    .chart-container p {
-      font-weight: 100;
-      font-size: 14px;
-      font-family: 'Sora';
-      margin-top: 10px;
-      text-align: center;
-    }
-     
-    .chart-section {
-      width: 500px;
+    <style jsx>{`     
+      .chart-container {       
+        border: 1px solid rgba(255, 255, 255, 0.1);       
+        border-radius: 16px;       
+        padding: 32px;       
+        font-family: 'Sora';       
+        display: flex;       
+        flex-direction: column;       
+        justify-content: center;       
+        align-items: center;     
+      }           
       
-    
-    }
-
-    .btm-txt {  
-      font-size: 15px;
-      text-align: center;
-      color: rgba(228, 159, 255, 0.8);
-      margin-top: 5px;
-    
-    }
-   
-    .chart-wrapper {
-      height: 300px;
+      .chart-container p {       
+        font-weight: 100;       
+        font-size: 14px;       
+        font-family: 'Sora';       
+        margin-top: 10px;       
+        text-align: center;     
+      }           
       
-     
-    }
-     
-    @media (max-width: 999px) {
-      .chart-container {
-        padding: 0px;
-        margin: 0 10px;
-        max-width: 300px;
-      }
-
-      .btm-txt {
-      font-size: 12px;
+      .chart-section {       
+        width: 500px;                 
+      }      
       
-      }
-
-      .chart-section {
-        width: 75vw;
-      }
-                           
-      .chart-wrapper {
-        height: 150px; /* Shorter height on mobile */
-      }
-                           
-      .chart-container p {
-        font-size: 12px; /* Smaller text on mobile */
-        margin-top: 8px;
-      }
-    }
-   
-    @media (max-width: 1000px) {
-      .feature-item-list {
-        display: none;
-      }
-    @media (max-width: 600px) {
-      .chart-container {
-        padding: 12px;
-        border-radius: 12px;
-      }
-
-    
-    }
-  `}</style>
+      .btm-txt {         
+        font-size: 15px;       
+        text-align: center;       
+        color: rgba(228, 159, 255, 0.8);       
+        margin-top: 5px;          
+      }         
+      
+      .chart-wrapper {       
+        height: 300px;                  
+      }           
+      
+      @media (max-width: 999px) {       
+        .chart-container {         
+          padding: 0px;         
+          margin: 0 10px;         
+          max-width: 300px;       
+        }        
+        
+        .btm-txt {       
+          font-size: 12px;              
+        }        
+        
+        .chart-section {         
+          width: 75vw;       
+        }                                   
+        
+        .chart-wrapper {         
+          height: 150px; /* Shorter height on mobile */       
+        }                                   
+        
+        .chart-container p {         
+          font-size: 12px; /* Smaller text on mobile */         
+          margin-top: 8px;       
+        }     
+      }         
+      
+      @media (max-width: 1000px) {       
+        .feature-item-list {         
+          display: none;       
+        }     
+      
+      @media (max-width: 600px) {       
+        .chart-container {         
+          padding: 12px;         
+          border-radius: 12px;       
+        }           
+      }   
+    `}</style>  
 
   
 
-  <div className='feature-item-list'>
-                  <div class="newsletter-stats">
-                 
-                      <div class="stat-item">
-                        <span class="stat-number">94%</span>
-                        <span class="stat-label">Approval</span>
-                      </div>
-
-
-                      <div class="stat-divider"></div>
-
-
-                      <div class="stat-item">
-                        <span class="stat-number">20+</span>
-                        <span class="stat-label">Beta testers</span>
-                      </div>
-
-
-                      <div class="stat-divider"></div>
-
-
-                      <div class="stat-item">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">discoveries</span>
-                      </div>
-                    </div>
-                    <p className='privacy-text-survey'>Based on a survey with 100+ applicants.</p>
-                   
-                    </div>
 
 </div>
 <div className='feature-list'>
@@ -4725,6 +4776,7 @@ display: none}
       {/* Right Column - Founder Cards */}
     
       <div className="founders-right-column">
+        <h2 className="mission-title2">Our Backstory</h2>
 
         <h2 className="mission-title3">The Founders</h2>
         <div className="founder-card">
@@ -4773,7 +4825,8 @@ display: none}
 
        {/* Left Column - Title and Story */}
       <div className="founders-left-column">
-          <h2 className="mission-title2">Our Backstory</h2>
+        <h2 className="mission-title3">Our Story</h2>
+
 
             <div class="story-content">
       <div class="polaroid-stack">
@@ -4800,15 +4853,28 @@ display: none}
             <div class="polaroid-caption">listening</div>
         </div>
     </div>
-    
-    <div>
-        <p class="story-text">
-  We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms. 
-</p>
-<p class="story-text">
-  So we built a space that feels human again - no endless playlists, no filters, no noise. Just people sharing tracks they love and connecting through music that matters.</p>
 
-    </div>
+    
+    
+    <div className="founder-card">
+                 
+                  <div className="founder-feature-text">
+
+                   <p>We’d been friends for years, always swapping tracks and sending songs late at night. <strong>That’s where the best discoveries happened — not from algorithms, but from each other.</strong> Over time, streaming apps started to feel less like music and more like noise, pushing the same tracks and burying what mattered.</p>
+
+<p>So we decided to create something different. A space that feels like the way music always felt for us: personal, human, and shared between friends. <strong>No algorithms. No clutter.</strong> Just people connecting over the songs they love, the ones that actually mean something.</p>
+
+                  </div>
+
+                  <div className="founder-feature-text-compact">
+
+                 <p>We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms.</p>
+                 <p>So we built a space that feels human again - no endless playlists, no filters, no noise. Just people sharing tracks they love and connecting through music that matters.</p>
+                  </div>
+
+
+
+                </div>
 </div>
 
       </div>
@@ -4822,13 +4888,13 @@ display: none}
       
       <section id="newsletter" className="founders-section" ref={addSectionRef}>
   <div className="section-container">
-    <div className="founders-main-grid">
+    <div className="newsletter-main-grid">
       
      
 
       {/* Right Column - Founder Cards */}
     
-      <div className="founders-right-column">
+      <div className="newsletter-right-column">
 
         <div className="founder-card">
           <h2 className="newsletter-title">Don't Miss the Drop</h2>
