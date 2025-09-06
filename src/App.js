@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+
 import logo from "./assets/images/nnlogo.png";
 import './assets/fonts/fonts.css';
 import charles from './assets/images/charles.jpg';
@@ -533,11 +534,37 @@ const options = {
         .stylized-line {
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.5) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(154, 6, 212, 0.5) 50%, transparent 100%);
   margin: 0rem 0;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.stylized-line2 {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(154, 6, 212, 0.5) 50%, transparent 100%);
+  margin: 0rem 0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+@media (max-width: 1000px) {
+
+.stylized-line2 {
+
+display: block;
+      }
+
+
+
+
+}
+
+  
+
+
 
         /* Enhanced Founders Section Styles */
 .founders-section {
@@ -1457,10 +1484,10 @@ margin: 0 auto;}
 
         @media (max-width:1000px) {
           .founder-feature-text {
-            display:none;
+            display : none;
           }
           .founder-feature-text-compact {
-            display: block;
+            display: flex;
           }
         }
 
@@ -2618,6 +2645,18 @@ margin-right: 13px;}}
     gap: 3rem;
     text-align: center;
 }
+
+@media (max-width: 1000px) {
+
+
+.story-content{
+gap: 1rem;
+
+}
+
+}
+
+
 
 /* Polaroid Stack Container */
 .polaroid-stack {
@@ -4104,13 +4143,7 @@ display: none}
 
                         min-height: 80vh;
 
-                        .story-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 3rem;
-                text-align: center;
-            }
+                        
 
 
             
@@ -4852,6 +4885,7 @@ display: none}
             <div class="polaroid-caption">listening</div>
         </div>
     </div>
+    <div className="stylized-line2"></div>
 
     
     
@@ -4867,9 +4901,12 @@ display: none}
 
                   <div className="founder-feature-text-compact">
 
-                 <p>We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms.</p>
-                 <p>So we built a space that feels human again - no endless playlists, no filters, no noise. Just people sharing tracks they love and connecting through music that matters.</p>
-                  </div>
+                <p>We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms.</p>
+
+<p>Sharing tracks late at night and swapping playlists was where the real magic happened — personal, human, and genuine.</p>
+
+<p>So we built a space that brings that back. No endless playlists, no filters, no noise. Just people sharing the songs they love and connecting through music that matters.</p>
+</div>
 
 
 
