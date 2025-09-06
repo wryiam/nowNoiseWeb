@@ -4268,8 +4268,8 @@ display: none}
                                           -webkit-background-clip: text;
                                           -webkit-text-fill-color: transparent;
                                           margin-bottom: 0.8rem;
-                                          
-                                
+                                          margin-top: 200px;
+                                    
                                           line-height: 1.1;
                                           margin:  auto;
                                           display: block;
