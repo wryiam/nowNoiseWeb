@@ -2024,7 +2024,7 @@ footer {
   padding: clamp(80px, 10vw, 140px) 20px;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 113vh;
 
   
   margin: 0 auto;
@@ -4268,6 +4268,7 @@ display: none}
                                           -webkit-background-clip: text;
                                           -webkit-text-fill-color: transparent;
                                           margin-bottom: 0.8rem;
+                                          
                                 
                                           line-height: 1.1;
                                           margin:  auto;
