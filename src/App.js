@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { Bar } from 'react-chartjs-2';
 import logo from "./assets/images/nnlogo.png";
 import './assets/fonts/fonts.css';
 import charles from './assets/images/charles.jpg';
