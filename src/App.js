@@ -600,7 +600,8 @@ display: block;
   display: grid;
   grid-template-columns: 1fr ;
   gap: clamp(80px, 12vw, 120px);
-
+  min-height: 60vh;
+  align-items:center;
   max-width: 50%;
   margin: 0 auto;
 }
@@ -1257,7 +1258,7 @@ margin: 0 auto;}
   }
 
   .founders-main-grid {
-    gap: 1rem;
+    gap: 14rem;
   }
 
   .founder-card {
@@ -1316,7 +1317,7 @@ margin: 0 auto;}
           opacity: 0;
           transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
           transform: translateY(50px);
-          min-height: 120vh;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1576,7 +1577,7 @@ margin: 0 auto;}
   transform: translateY(50px);
   margin-left: 7%;
   margin-right:7%;
-  min-height: 120vh;
+  min-height: 100vh;
 
   
   
@@ -2023,7 +2024,7 @@ footer {
   padding: clamp(80px, 10vw, 140px) 20px;
   position: relative;
   width: 100%;
-  min-height: 120vh;
+  min-height: 100vh;
 
   
   margin: 0 auto;
@@ -4267,7 +4268,7 @@ display: none}
                                           -webkit-background-clip: text;
                                           -webkit-text-fill-color: transparent;
                                           margin-bottom: 0.8rem;
-                                          padding-top: 250px;
+                                
                                           line-height: 1.1;
                                           margin:  auto;
                                           display: block;
@@ -4899,14 +4900,7 @@ display: none}
 
                   </div>
 
-                  <div className="founder-feature-text-compact">
-
-                <p>We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms.</p>
-
-<p>Sharing tracks late at night and swapping playlists was where the real magic happened — personal, human, and genuine.</p>
-
-<p>So we built a space that brings that back. No endless playlists, no filters, no noise. Just people sharing the songs they love and connecting through music that matters.</p>
-</div>
+                  <div class="founder-feature-text-compact"><p>We were tired of streaming apps pushing the same songs. The best discoveries have always come from friends, not algorithms.</p><p>Sharing tracks late at night and swapping playlists was where the real magic happened — personal, human, and genuine.</p><p>So we built a space that brings that back. No endless playlists, no filters, no noise. Just people sharing the songs they love and connecting through music that matters.</p></div>
 
 
 
