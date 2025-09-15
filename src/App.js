@@ -4816,7 +4816,7 @@ display: none}
             
             </div>
             <div className='founder-info'>
-              <h3 className="founder-name">William Encarnacion</h3>
+              <h3 className="founder-name">William Costales</h3>
               <p className="founder-title-text">Co-founder & Developer</p>
             </div>
             
