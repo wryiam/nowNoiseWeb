@@ -4377,7 +4377,7 @@ display: none}
           <div className="logotag">
             <img src={logo} className="main-logo" alt="nowNoise Logo" />
             <h1 className="hero-title">NowNoise</h1>
-            <h2 className="hero-tagline">your song, in a day</h2>
+            <h2 className="hero-tagline">your day, in a song</h2>
           </div>
           <button
             onClick={() => {
